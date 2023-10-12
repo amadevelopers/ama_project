@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Routes } from "react-router-dom";
 
 import HomePage from "../pages/homePage";
-import CseDept from '../pages/cseDept';
+import CseDept from '../pages/CseDept';
 function AppRoutes() {
     return (
         <div>
