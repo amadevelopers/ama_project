@@ -1,1 +1,5 @@
 django 
+django-admin
+psycopg
+djangorestframework
+django[bcrypt]

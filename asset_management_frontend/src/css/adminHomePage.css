@@ -1,0 +1,103 @@
+.admin-actions{
+    display: flex;
+}
+.admin-action-selection{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.admin-action-selection h3{
+    padding: 0rem 1rem;
+}
+
+.admin-actions{
+    padding:1rem;
+}
+.admin-actions input {
+    cursor: pointer;
+}
+.action-selector{
+    display: flex;
+    padding: 0rem 1rem;
+    font-size: 2rem;
+    font-weight: 500;
+}
+.admin-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0rem;
+}
+
+.admin-header h2{
+    color: '';
+}
+
+.admin-form-main{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 3rem 0rem;
+    width: 100%;
+}
+
+.admin-form-sub{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width:30%;
+    border: 0.2rem solid black;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.admin-form-sub label{
+    padding: 1rem;
+}
+.admin-dept-selector{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.admin-user-type-selector{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.admin-username-selector{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.admin-password-selector{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.admin-create-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.admin-create-button button{
+    width:100%;
+}
