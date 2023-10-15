@@ -161,3 +161,37 @@ const CseDept = () => {
 };
 
 export default CseDept;
+
+
+
+const [user,setUser] = useState(false)
+const [adim,setadim] = useState(false)
+const [superAdmin,setsuperAdmin] = useState(false)
+
+const handleUserTypeSelection = (e) => {
+    if(e.target.value === user)
+      setUser(true)
+    else if(e.target.value === admin)
+    setadim(true)
+    else
+    setsuperAdmin(true)
+}
+
+<div>
+    <label >Select user type</label>
+    <select id='' name='userType' value='userType' onChange={handleUserTypeSelection}> 
+    <option></option>
+    <option></option>
+    <option></option>
+    </select>
+</div>
+
+{(user || adim) && 
+<div>
+    //dropdown for department and user id(user name)
+</div>
+}
+
+<div>
+// password to be accepted for all three types of users
+</div>

@@ -5,15 +5,18 @@ import './cards.css'
 function Cards() {
     const navigate = useNavigate();
 
-    const handleClickDept = (deptName) => {
-        navigate(`/${deptName}`)
+    const handleClickDept = async(index) => {
+        const deptName = index.deptName;
+        const id = index.id;
+        navigate(`/${deptName}/${id}`)
     }
+
     return (
         <div>
             <div className='cards-main-container'>
                 {CardData.map((index,key) => {
                     return( 
-                    <div className='cards-sub-container' onClick={() => handleClickDept(index.name)}>
+                    <div className='cards-sub-container' onClick={() => handleClickDept(index)}>
                         <div className='cards-title'>{index.title}</div>
                     </div>)
                 })}
