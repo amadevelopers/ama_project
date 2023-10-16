@@ -13,7 +13,7 @@ function AppRoutes() {
                 <Route path="/"  element={<HomePage/>} />
                 <Route path="/login"  element={<LoginPage/>} />
                 <Route path="/admin-home" element={<AdminHomePage/>}/>
-                <Route path="/:deptname/:deptId" element={<CseDept/>}/>
+                <Route path="/:deptName/:deptId" element={<CseDept/>}/>
 
             </Routes>
         </div>

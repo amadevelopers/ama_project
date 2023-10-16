@@ -1,5 +1,149 @@
 [
     {
+        "architecture" :{
+            "csl01":[
+                {
+                    "name":"computer",
+                    "id":"123",
+                    "quantity":"10",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                },
+                {
+                    "name":"projector",
+                    "id":"123453",
+                    "quantity":"10",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                }
+            ],  
+            "csl02":[
+                {
+                    "name":"bench",
+                    "id":"123",
+                    "quantity":"1",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                },
+                {
+                    "name":"chair",
+                    "id":"123",
+                    "quantity":"1",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                }
+            ]
+        }
+    },
+    {
+        "biotech" :{
+            "csl01":[
+                {
+                    "name":"computer",
+                    "id":"123",
+                    "quantity":"10",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                },
+                {
+                    "name":"projector",
+                    "id":"123453",
+                    "quantity":"10",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                }
+            ],  
+            "csl02":[
+                {
+                    "name":"bench",
+                    "id":"123",
+                    "quantity":"1",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                },
+                {
+                    "name":"chair",
+                    "id":"123",
+                    "quantity":"1",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                }
+            ]
+        }
+    },
+    {
+        "chemical" :{
+            "isl01":[
+                {
+                    "name":"computer",
+                    "id":"123",
+                    "quantity":"1",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                },
+                {
+                    "name":"computer",
+                    "id":"123",
+                    "quantity":"1",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                }
+            ],
+            "isl02":[
+                {
+                    "name":"computer",
+                    "id":"123",
+                    "quantity":"1",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                },
+                {
+                    "name":"computer",
+                    "id":"123",
+                    "quantity":"1",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                }
+            ]
+        }
+    },
+    {
+        "civil" :{
+            "csl01":[
+                {
+                    "name":"computer",
+                    "id":"123",
+                    "quantity":"10",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                },
+                {
+                    "name":"projector",
+                    "id":"123453",
+                    "quantity":"10",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                }
+            ],  
+            "csl02":[
+                {
+                    "name":"bench",
+                    "id":"123",
+                    "quantity":"1",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                },
+                {
+                    "name":"chair",
+                    "id":"123",
+                    "quantity":"1",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                }
+            ]
+        }
+    },
+    {
         "cse" :{
             "csl01":[
                 {
@@ -36,33 +180,69 @@
         }
     },
     {
-        "ise" :{
-            "isl01":[
+        "eee" :{
+            "csl01":[
                 {
                     "name":"computer",
+                    "id":"123",
+                    "quantity":"10",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                },
+                {
+                    "name":"projector",
+                    "id":"123453",
+                    "quantity":"10",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                }
+            ],  
+            "csl02":[
+                {
+                    "name":"bench",
                     "id":"123",
                     "quantity":"1",
                     "purchaseDate":"15/10/2023",
                     "price":"10000000"
                 },
                 {
-                    "name":"computer",
+                    "name":"chair",
                     "id":"123",
                     "quantity":"1",
                     "purchaseDate":"15/10/2023",
                     "price":"10000000"
                 }
-            ],
-            "isl02":[
+            ]
+        }
+    },
+    {
+        "ece" :{
+            "csl01":[
                 {
                     "name":"computer",
+                    "id":"123",
+                    "quantity":"10",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                },
+                {
+                    "name":"projector",
+                    "id":"123453",
+                    "quantity":"10",
+                    "purchaseDate":"15/10/2023",
+                    "price":"10000000"
+                }
+            ],  
+            "csl02":[
+                {
+                    "name":"bench",
                     "id":"123",
                     "quantity":"1",
                     "purchaseDate":"15/10/2023",
                     "price":"10000000"
                 },
                 {
-                    "name":"computer",
+                    "name":"chair",
                     "id":"123",
                     "quantity":"1",
                     "purchaseDate":"15/10/2023",
