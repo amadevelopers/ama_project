@@ -5,7 +5,8 @@ import HomePage from "../pages/homePage";
 import LoginPage from '../pages/loginPage';
 
 import AdminHomePage from '../pages/adminHomePage';
-import CseDept from '../pages/CseDept';
+// import CseDept from '../pages/CseDept';
+import CseDept from '../pages/cseDeptNew';
 function AppRoutes() {
     return (
         <div>
@@ -13,7 +14,8 @@ function AppRoutes() {
                 <Route path="/"  element={<HomePage/>} />
                 <Route path="/login"  element={<LoginPage/>} />
                 <Route path="/admin-home" element={<AdminHomePage/>}/>
-                <Route path="/:deptName/:deptId" element={<CseDept/>}/>
+                {/* <Route path="/:deptName/:deptId" element={<CseDept/>}/> */}
+                <Route path="/:deptName" element={<CseDept/>}/>
 
             </Routes>
         </div>

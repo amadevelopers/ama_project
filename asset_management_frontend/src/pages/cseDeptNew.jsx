@@ -1,16 +1,7 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
 import '../css/cseDept.css';
-import CardData from '../components/cards/cardData';
-import assetData from './dummy.json';
-const CseDept = (props) => {
-    const { deptname,deptId } = useParams();
-    console.log(deptname,deptId)
-    const department = assetData[0];
-    const deptNum = CardData[deptId].id;
-    console.log(deptNum)
 
-    // console.log("hey",deptname, "\n there",department)
+const CseDept = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formData, setFormData] = useState({
         name: '',
@@ -19,9 +10,7 @@ const CseDept = (props) => {
         purchaseDate: '',
         price: '',
     });
-    const [items, setItems] = useState([
-        
-    ]);
+    const [items, setItems] = useState([]);
 
     const openModal = () => {
         setIsModalOpen(true);
@@ -38,12 +27,13 @@ const CseDept = (props) => {
             [name]: value,
         });
     };
+
     const handleSubmit = () => {
-        //yup validation
         if (!formData.name || !formData.id || !formData.quantity || !formData.purchaseDate || !formData.price) {
             alert("Please fill out all required fields.");
             return;
         }
+
         const newItem = { ...formData };
         setItems([...items, newItem]);
 
@@ -84,56 +74,30 @@ const CseDept = (props) => {
                         <th>Quantity</th>
                         <th>Purchase Date</th>
                         <th>Price</th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    {/* maps work only for array and not for objects */}
-                    {Object.keys(department).map((key, index) => (
-                        <>
-                            {console.log(department)}
-                            {console.log(department[key])}
-                            {Object.keys(department[key]).map((rooms, index) => (
-                                <>
-                                {
-                                    Object.keys(department[key][rooms]).map((item,index) => (
-                                        <>
-                                            {/* {console.log(department[key][rooms])} */}
-                                            {console.log(department[key][rooms][item].name)}
-                                            {console.log("hello",item)}
-                                            {
-                                                // Object.keys(department[key][rooms][assets].map((item,index) => {
-                                                    <>
-                                                    {/* {console.log(department[key][rooms][assets][item])} */}
-                                                    <tr key={index}>
-                                                        {console.log(index)}
-                                                        <td>{department[key][rooms][item].name}</td>
-                                                        <td>{department[key][rooms][item].id}</td>
-                                                        <td>{department[key][rooms][item].quantity}</td>
-                                                        <td>{department[key][rooms][item].purchaseDate}</td>
-                                                        <td>{department[key][rooms][item].price}</td>
-                                                        <td>
-                                                            <button className='edit-btn' onClick={() => handleEdit(index)}>Edit</button>
-                                                        </td>
-                                                        <td>
-                                                            <button className='delete-btn' onClick={() => handleDelete(index)}>Delete</button>
-                                                        </td>
-                                                    </tr>   
-                                                    </>
-                                                // }))
-                                            }
-                                        </>
-                                    ))
-                                }
-                            </>
-                            ))}
-                        </>
-
+                    {items.map((item, index) => (
+                        <tr key={index}>
+                            <td>{item.name}</td>
+                            <td>{item.id}</td>
+                            <td>{item.quantity}</td>
+                            <td>{item.purchaseDate}</td>
+                            <td>{item.price}</td>
+                            <td>
+                                <button className='edit-btn' onClick={() => handleEdit(index)}>Edit</button>
+                            </td>
+                            <td>
+                                <button className='delete-btn' onClick={() => handleDelete(index)}>Delete</button>
+                            </td>
+                        </tr>
                     ))}
-                    <button className="add-btn" onClick={openModal}>
-                        Add
-                    </button>
                 </tbody>
             </table>
+            <button className="add-btn" onClick={openModal}>
+                Add
+            </button>
             {isModalOpen && (
                 <div className="modal">
                     <div className="modal-content">
@@ -197,4 +161,3 @@ const CseDept = (props) => {
 };
 
 export default CseDept;
-

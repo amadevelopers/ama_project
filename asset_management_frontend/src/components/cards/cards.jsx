@@ -8,7 +8,9 @@ function Cards() {
     const handleClickDept = async(index) => {
         const deptName = index.deptName;
         const id = index.id;
-        navigate(`/${deptName}/${id}`)
+        // navigate(`/${deptName}/${id}`)
+        navigate(`/${deptName}`)
+
     }
 
     return (
