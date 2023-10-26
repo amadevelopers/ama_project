@@ -1,4 +1,4 @@
-#!/run/media/niranjan/harddisk/workingProjects/ama_project/amaenv/bin/python
+#!/hdd/workingProjects/ama_project/amaenv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
