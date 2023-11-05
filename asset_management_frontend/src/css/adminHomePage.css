@@ -1,31 +1,44 @@
 .admin-actions{
     display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
 }
 .admin-action-selection{
+    width:100%;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 2rem 0rem;
 }
 
-.admin-action-selection h3{
-    padding: 0rem 1rem;
-}
 
-.admin-actions{
-    padding:1rem;
-}
-.admin-actions input {
-    cursor: pointer;
-}
 .action-selector{
+    width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0rem 1rem;
-    font-size: 2rem;
+    /* font-size: 2rem; */
     font-weight: 500;
+}
+
+.action-selector input{
+    cursor: pointer;
+    /* padding: 0rem; */
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.action-selector label{
+    /* padding: 0rem; */
+    width: 80%;
+    font-size: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 .admin-header{
     display: flex;

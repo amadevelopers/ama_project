@@ -1,0 +1,10 @@
+{
+    "1":{
+        "assetType":"computer",
+        "specifications":{
+            "memory":"4Gb",
+            "processor":"Intel",
+            "color":"black"
+        }
+    }
+}

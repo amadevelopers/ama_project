@@ -1,0 +1,84 @@
+.add-asset-radio-selector{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.asset-radio-main-container{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.asset-type-selector{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.asset-type-selector input{
+    cursor: pointer;
+    /* padding: 0rem; */
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.asset-type-selector label{
+    /* padding: 0rem; */
+    width: 80%;
+    font-size: 2rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.add-asset-tag-main{
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-asset-tag-sub input {
+    width: 100%;
+    padding: 7px 0px;   
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* tag assets display */
+.tag-assets-specs-main{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.tag-assets-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 1.5rem;
+}
+.tag-assets-specs-sub{
+    width: 40%;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 50% 50%;
+    /* border: 1px solid black; */
+}
+
+.tag-assets-specs-sub p{
+    
+    border: 1px solid black;
+}
