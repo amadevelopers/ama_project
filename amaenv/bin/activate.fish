@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/run/media/niranjan/harddisk/workingProjects/ama_project/amaenv"
+set -gx VIRTUAL_ENV "/hdd/workingProjects/ama_project/amaenv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

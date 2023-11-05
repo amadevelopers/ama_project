@@ -30,7 +30,7 @@ class LoginView(APIView):
         
         paylod={
             'id':user.id,
-            'exp':datetime.datetime.utcnow() + datetime.timedelta(days=1), #expire time 
+            'exp':datetime.datetime.utcnow() + datetime.timedelta(days=1), #expire time #change later
             'iat': datetime.datetime.utcnow() #created time 
         }
 
