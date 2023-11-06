@@ -12,9 +12,9 @@ function AppRoutes() {
     return (
         <div>
             <Routes>
-                <Route path="/"  element={<HomePage/>} />
+                {/* <Route path="/"  element={<HomePage/>} /> */}
                 <Route path="/login"  element={<LoginPage/>} />
-                <Route path="/admin-home" element={<AdminHomePage/>}/>
+                <Route path="/" element={<AdminHomePage/>}/>
                 <Route path="/create-asset" element={<CreateAsset/>}/>
 
                 {/* <Route path="/:deptName/:deptId" element={<CseDept/>}/> */}

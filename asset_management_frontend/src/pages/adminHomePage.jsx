@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Form } from 'react-router-dom'
 import '../css/adminHomePage.css'
 import Cards from '../components/cards/cards'
-import AddAsset from './addAsset'
+import {AddAsset} from './AddAsset/addAsset'
 
 function AdminHomePage() {
 
