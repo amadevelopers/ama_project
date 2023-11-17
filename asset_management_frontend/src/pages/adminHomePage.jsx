@@ -5,6 +5,7 @@ import Cards from '../components/cards/cards'
 import { AddAsset } from './AddAsset/addAsset'
 import CreateAsset from './CreateAsset'
 import Header from '../components/header/header'
+import Purchase from './purchase'
 
 function AdminHomePage() {
 
@@ -89,6 +90,11 @@ function AdminHomePage() {
                     </div>
                 </div>
             </div>
+            {adminAction === 'invoice' &&
+                <div>
+                    <Purchase/>
+                </div>
+            }
             {adminAction === 'createAssetType' &&
                 <div>
                     <CreateAsset />

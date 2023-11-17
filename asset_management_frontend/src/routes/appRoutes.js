@@ -17,10 +17,6 @@ function AppRoutes() {
                 {/* <Route path="/"  element={<HomePage/>} /> */}
                 <Route path="/" element={<AdminHomePage/>}/>
                 <Route path="/login"  element={<LoginPage/>} />
-                <Route path="/purchase" element={<Purchase/>}/>                
-                <Route path="/create-asset" element={<CreateAsset/>}/>
-
-                {/* <Route path="/:deptName/:deptId" element={<CseDept/>}/> */}
                 <Route path="/:deptName" element={<CseDept/>}/>
 
             </Routes>

@@ -23,7 +23,6 @@ function Purchase() {
   };
   return ( 
     <div className="wrapper">
-      <Header/>
       <h1>Purchase</h1>
       <form onSubmit={handleSubmit}> 
         <label htmlFor="invoice">Invoice Number:</label>
