@@ -66,7 +66,7 @@ function CreateAsset() {
   };
   return (
     <div>
-      <Header />
+      {/* <Header /> */}
       <div className="heading">
         <h1>Create Asset Type</h1>
       </div>

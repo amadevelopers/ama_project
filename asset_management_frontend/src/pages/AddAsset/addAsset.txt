@@ -11,11 +11,14 @@ function AddAsset() {
     const [tagAssetSpecsDisplay, settagAssetSpecsDisplay] = useState(false)
     const [specsToBeEdited, setspecsToBeEdited] = useState('')
     const [newSpecsValue, setnewSpecsValue] = useState('')
-    const [specsObj, setSpecsObj] = useState({ '': '' });
+    const [specsObj, setSpecsObj] = useState({});
     const [qtyOfAsset, setqtyOfAsset] = useState('')
     const [assetType, setassetType] = useState('')
-    const [currentFormIndex, setCurrentFormIndex] = useState(0);
-
+    const [formSubmitted, setformSubmitted] = useState(true);
+    const initialShowAssetDetails = Array.from({ length: qtyOfAsset }, () => false);
+    const [showAssetDetails, setShowAssetDetails] = useState(initialShowAssetDetails);
+    const [renderedAssetCount, setRenderedAssetCount] = useState(0);
+    var i = 0
     const handleAssetSubType = async (e) => {
         await setassetSubType(e.target.value)
     }
@@ -44,26 +47,24 @@ function AddAsset() {
     const handleAssetTypeSelection = (e) => {
         setassetType(e.target.value)
     }
-    const handleformSubmitted = (formdata) => {
-        console.log(formdata)
+
+    var newQty = qtyOfAsset;
+    const handleformSubmitted = (data, index) => {
+        // Update the state in the parent component with data from the child
+        // i++
+        // index = i
+        setRenderedAssetCount(setRenderedAssetCount+1)
+        setformSubmitted(data);
+        // setShowAssetDetails([true]);
+
+        const updatedShowAssetDetails = [...showAssetDetails];
+        updatedShowAssetDetails[renderedAssetCount] = !updatedShowAssetDetails[renderedAssetCount];
+        setShowAssetDetails(updatedShowAssetDetails);
+        console.log(updatedShowAssetDetails)
+        setRenderedAssetCount(renderedAssetCount + 1);
     }
-    const handleFormSubmit = () => {
-        // Handle form submission logic here
-        setCurrentFormIndex((prevIndex) => {
-            const newIndex = prevIndex + 1;
-            console.log(newIndex, qtyOfAsset)
-            // Check if it's the last form
-            if (newIndex == qtyOfAsset) {
-                // Reload the page
-                window.location.reload();
-            }
-
-            return newIndex;
-        });
-    };
-
     return (
-        <div className='add-asset-main-container'>
+        <div>
             <div className='add-asset-radio-selector'>
                 <h3>Enter the type of Asset</h3>
                 <div className='asset-radio-main-container'>
@@ -100,30 +101,32 @@ function AddAsset() {
                                     )
                                 })}
                             </div>
-                            <form className='tag-form' onSubmit={handleSubmitSpecs}>
-                                <div className='tag-edit-specs'>
+                            <form onSubmit={handleSubmitSpecs}>
+                                <div>
                                     <label htmlFor='editSpecs'>Enter the specification which you would like to change</label>
                                     <input type='text' name='editSpecs' value={specsToBeEdited} onChange={(e) => setspecsToBeEdited(e.target.value)}></input>
                                 </div>
-                                <div className='tag-new-specs'>
+                                <div>
                                     <label htmlFor='editSpecs'>Enter the new value </label>
                                     <input type='text' name='newSpecs' value={newSpecsValue} onChange={(e) => setnewSpecsValue(e.target.value)}></input>
                                 </div>
                                 <button type="submit">Submit</button>
                             </form>
+
                         </div>
                     }
+
                 </div>
             }
 
             {
                 assetSubType === 'notag' &&
-                <div className='notag-main-container'>
-                    <div className='notag-sub-container'>
+                <div>
+                    <div>
                         <label htmlFor='qtyOfAsset'>Enter the quantity of assets to be added</label>
                         <input type='number' name='qtyOfAsset' value={qtyOfAsset} onChange={(e) => setqtyOfAsset(e.target.value)}></input>
                     </div>
-                    <div className='notag-asset-type-dropdown'>
+                    <div className=''>
                         <label htmlFor='assetType'>Asset Type: </label>
                         <select id='assetTypeDropdown' name='assetTpe' value={assetType} onChange={handleAssetTypeSelection} >
                             <option value="">--Select Asset Type--</option>
@@ -134,12 +137,12 @@ function AddAsset() {
                             })}
                         </select>
                     </div>
-                    {currentFormIndex < Number(qtyOfAsset) && (
-                        <div className='notag-forms' key={currentFormIndex}>
-                            <AssetDetails assetType={assetType} onDataUpdate={handleformSubmitted} onFormAction={handleFormSubmit} />
-                        </div>
-                    )}
+                    <div>
 
+                        {formSubmitted && (!showAssetDetails[renderedAssetCount]) &&
+                            <AssetDetails assetType={assetType} onDataUpdate={handleformSubmitted} />
+                        }
+                    </div>
                 </div>
             }
         </div>
@@ -151,7 +154,7 @@ function AddAsset() {
 function AssetDetails(props) {
     const { assetType } = props
     const [specs, setspecs] = useState([])
-    // const [formSubmitted, setFormSubmitted] = useState(true);
+    const [formSubmitted, setFormSubmitted] = useState(true);
     const [specsValues, setspecsValues] = useState({})
 
     const handleSpecsSelection = (e, specName) => {
@@ -160,20 +163,19 @@ function AssetDetails(props) {
         setspecsValues(newSpecsValues);
     }
 
-    const handleSave = async (e) => {
-        e.preventDefault()
+    const handleSave = () => {
         console.log(specsValues)
-        props.onDataUpdate(specsValues);
-        await setspecsValues({})
-        props.onFormAction();
+        setFormSubmitted(true);
+        setspecsValues({})
+        props.onDataUpdate(formSubmitted);
     };
     return (
-        <div className='assetDetails-from-main'>
+        <div>
             {assetType &&
-                <form className='assetDetails-form' onSubmit={handleSave}>
+                <form onSubmit={handleSave}>
                     {Object.keys(noTagDetails[assetType]).map((value, index) => {
                         return (
-                            <div className='assetDetails-input' key={index}>
+                            <div key={index}>
                                 <label htmlFor='specsInput'>{value}</label>
                                 <input type='text' value={specs[value]} onChange={(e) => handleSpecsSelection(e, value)}></input>
                             </div>

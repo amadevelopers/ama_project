@@ -1,3 +1,8 @@
+.add-asset-main-container{
+    /* background-color: #fff; */
+
+}
+
 .add-asset-radio-selector{
     width: 100%;
     display: flex;
@@ -20,7 +25,6 @@
 
 .asset-type-selector input{
     cursor: pointer;
-    /* padding: 0rem; */
     width: 20%;
     display: flex;
     justify-content: center;
@@ -28,7 +32,6 @@
 }
 
 .asset-type-selector label{
-    /* padding: 0rem; */
     width: 80%;
     font-size: 2rem;
     display: flex;
@@ -36,31 +39,66 @@
     align-items: center;
 }
 
-.add-asset-tag-main{
-    margin-top: 4rem;
+/* Styling for the 'tag' section of AddAsset component */
+.add-asset-tag-main {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.add-asset-tag-sub {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.add-asset-tag-sub label {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #333;
 }
 
 .add-asset-tag-sub input {
-    width: 100%;
-    padding: 7px 0px;   
-    margin: 5px 0;
+    width: 30%;
+    padding: 1rem;
+    margin: 1rem 0;
     border: 1px solid #ccc;
-    border-radius: 3px;
+    border-radius: 5px;
+    font-size: 1.6rem;
 }
 
-/* tag assets display */
-.tag-assets-specs-main{
+.add-asset-tag-sub button {
+    background-color: #0074d9;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.6rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.add-asset-tag-sub button:hover {
+    background-color: #0056b3;
+}
+
+.tag-assets-specs-main {
+    width: 60%;
     display: flex;
-    width: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-.tag-assets-container{
+
+.tag-assets-container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -69,16 +107,177 @@
     text-align: center;
     margin-top: 1.5rem;
 }
-.tag-assets-specs-sub{
-    width: 40%;
+
+.tag-assets-specs-sub {
+    width: 100%;
     display: grid;
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: 50% 50%;
-    /* border: 1px solid black; */
+    grid-template-columns: 1fr 1fr;
+    border: 1px solid #030d5c;
+    margin-bottom: 1rem;
+    border-radius: 5px;
 }
 
-.tag-assets-specs-sub p{
-    
-    border: 1px solid black;
+.tag-assets-specs-sub p {
+    padding: 1rem;
+    border: 1px solid #030d5c;
+}
+
+.tag-assets-specs-sub p:last-child {
+    border-right: none;
+}
+
+.tag-assets-specs-sub label {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Styling for the 'tag' form */
+.tag-form {
+    width: 60%;
+    margin: 2rem auto;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.tag-edit-specs,
+.tag-new-specs {
+    margin-bottom: 1.5rem;
+}
+
+.tag-edit-specs label,
+.tag-new-specs label {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.tag-edit-specs input,
+.tag-new-specs input {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1.4rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #0074d9;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+/* Styling for 'notag' section */
+.notag-main-container {
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.notag-sub-container,
+.notag-asset-type-dropdown {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem;
+}
+
+.notag-forms {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+}
+
+/* Styling for form elements in 'notag' section */
+.notag-sub-container label,
+.notag-asset-type-dropdown label {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.notag-sub-container input,
+.notag-asset-type-dropdown select {
+    width: 100%;
+    padding: 7px 0px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+/* Styling for the AssetDetails component in 'notag' section */
+
+
+
+/* Styling for the AssetDetails form */
+
+.assetDetails-from-main {
+    width: 30%;
+}
+.assetDetails-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    border: 2px solid #352d2d; /* Add border */
+    padding: 1rem; /* Add padding for a better look */
+    border-radius: 5px; 
+}
+
+.assetDetails-input {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem 0;
+}
+
+.assetDetails-input label {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.assetDetails-input input {
+    width: 100%;
+    padding: 7px 0px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.assetDetails-form button {
+    width: 40%;
+    padding: 10px;
+    margin-top: 1rem;
+    background-color: #0074d9;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.assetDetails-form button:hover {
+    background-color: #0056b3;
 }

@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Form } from 'react-router-dom'
 import '../css/adminHomePage.css'
 import Cards from '../components/cards/cards'
-import {AddAsset} from './AddAsset/addAsset'
+import { AddAsset } from './AddAsset/addAsset'
+import CreateAsset from './CreateAsset'
+import Header from '../components/header/header'
 
 function AdminHomePage() {
 
@@ -38,7 +40,7 @@ function AdminHomePage() {
         await formdata.append("userName", userName);
         await formdata.append("password", password);
         await console.log("Form values: ", formdata.get(''))
-        
+
         // new Response(formdata).text().then(console.log)
         const formDataToObject = (formData) => {
             const data = {};
@@ -61,7 +63,7 @@ function AdminHomePage() {
     }, [])
     return (
         <div className='admin-main-container'>
-
+            <Header/>
             <div className='admin-action-selection'>
                 <h2>Admin Actions:</h2>
                 <div className='admin-actions' >
@@ -87,12 +89,16 @@ function AdminHomePage() {
                     </div>
                 </div>
             </div>
-            {adminAction === 'addAsset' &&
+            {adminAction === 'createAssetType' &&
                 <div>
-                    <AddAsset/>
+                    <CreateAsset />
                 </div>
             }
-
+            {adminAction === 'addAsset' &&
+                <div>
+                    <AddAsset />
+                </div>
+            }
             {adminAction === 'viewAsset' &&
                 <div>
                     <div className='admin-header'>
