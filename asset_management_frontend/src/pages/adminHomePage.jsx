@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Form } from 'react-router-dom'
 import '../css/adminHomePage.css'
 import Cards from '../components/cards/cards'
+import { AddAsset } from './AddAsset/addAsset'
+import CreateAsset from './CreateAsset'
+import Header from '../components/header/header'
+import Purchase from './purchase'
 
 function AdminHomePage() {
 
@@ -37,7 +41,7 @@ function AdminHomePage() {
         await formdata.append("userName", userName);
         await formdata.append("password", password);
         await console.log("Form values: ", formdata.get(''))
-        
+
         // new Response(formdata).text().then(console.log)
         const formDataToObject = (formData) => {
             const data = {};
@@ -60,22 +64,48 @@ function AdminHomePage() {
     }, [])
     return (
         <div className='admin-main-container'>
-
+            <Header/>
             <div className='admin-action-selection'>
                 <h2>Admin Actions:</h2>
                 <div className='admin-actions' >
                     <div className='action-selector'>
-                        <input type='radio' name='adminAction' value='view' onChange={handleAdminAction} />
-                        <label htmlFor='adminAction'>View Assets</label>
+                        <input type='radio' name='adminAction' value='invoice' onChange={handleAdminAction} />
+                        <label htmlFor='adminAction'>Purchases(Enter invoice)</label>
                     </div>
                     <div className='action-selector'>
-                        <input type='radio' name='adminAction' value='create' onChange={handleAdminAction} />
+                        <input type='radio' name='adminAction' value='createAssetType' onChange={handleAdminAction} />
+                        <label htmlFor='adminAction'>Create Asset Type</label>
+                    </div>
+                    <div className='action-selector'>
+                        <input type='radio' name='adminAction' value='addAsset' onChange={handleAdminAction} />
+                        <label htmlFor='adminAction'>Add Asset</label>
+                    </div>
+                    <div className='action-selector'>
+                        <input type='radio' name='adminAction' value='viewAsset' onChange={handleAdminAction} />
+                        <label htmlFor='adminAction'>View Existing Assets</label>
+                    </div>
+                    <div className='action-selector'>
+                        <input type='radio' name='adminAction' value='createUser' onChange={handleAdminAction} />
                         <label htmlFor='adminAction'>Create User</label>
                     </div>
                 </div>
-
             </div>
-            {adminAction === 'view' &&
+            {adminAction === 'invoice' &&
+                <div>
+                    <Purchase/>
+                </div>
+            }
+            {adminAction === 'createAssetType' &&
+                <div>
+                    <CreateAsset />
+                </div>
+            }
+            {adminAction === 'addAsset' &&
+                <div>
+                    <AddAsset />
+                </div>
+            }
+            {adminAction === 'viewAsset' &&
                 <div>
                     <div className='admin-header'>
                         <h2>Select the department to view the assets</h2>
@@ -87,7 +117,7 @@ function AdminHomePage() {
                 </div>
             }
 
-            {adminAction === 'create' &&
+            {adminAction === 'createUser' &&
                 <div className='admin-form-main'>
                     <form className='admin-form-sub' onSubmit={handleUserCreationForm} encType="multipart/form-data">
                         <div className='admin-dept-selector'>

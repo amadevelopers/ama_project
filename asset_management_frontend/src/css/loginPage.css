@@ -13,19 +13,19 @@
 /* Style the form elements */
 label {
     display: block;
-    margin-top: 10px;
+    /* margin-top: 10px; */
     font-weight: bold;
     font-size: 15px;
 }
 
-select,
+/* select,
 input {
     width: 100%;
-    padding: 8px;
+    padding: 8px;   
     margin: 5px 0;
     border: 1px solid #ccc;
     border-radius: 3px;
-}
+} */
 
 /* Center the login button and make it blue */
 button {

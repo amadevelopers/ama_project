@@ -19,16 +19,16 @@ function LoginPage() {
     const userType = e.target.value;
     if (userType === 'user') {
       setUser(true);
-       setAdmin(false);
-    setSuperAdmin(false);
+      setAdmin(false);
+      setSuperAdmin(false);
     } else if (userType === 'admin') {
       setAdmin(true);
       setUser(false);
-    setSuperAdmin(false);
+      setSuperAdmin(false);
     } else if (userType === 'superadmin') {
       setSuperAdmin(true);
       setUser(false);
-    setAdmin(false);
+      setAdmin(false);
     }
   };
 
@@ -48,41 +48,41 @@ function LoginPage() {
           </select>
         </div>
 
-        
-          <div>
-            {user && (
-              <div>
-                <label>Name:</label>
-                <input type="text" placeholder="Name" />
-                <label >Department:</label>
-                <select>
-                <option value="">Select Dept</option>
-                  <option value="cse">CSE</option>
-                  <option value="ise">ISE</option>
-                  <option value="ece">ECE</option>
-                </select>
-              </div>
-            )}
 
-            {admin && (
-              <div>
-                <label>Department:</label>
-                <select>
+        <div>
+          {user && (
+            <div>
+              <label>Name:</label>
+              <input type="text" placeholder="Name" />
+              <label >Department:</label>
+              <select>
                 <option value="">Select Dept</option>
-                  <option value="cse">CSE</option>
-                  <option value="ise">ISE</option>
-                  <option value="ese">ECE</option>
-                </select>
-              </div>
-            )}
+                <option value="cse">CSE</option>
+                <option value="ise">ISE</option>
+                <option value="ece">ECE</option>
+              </select>
+            </div>
+          )}
 
-            {superAdmin && (
-              <div>
-                <p className='sa'>Super Admin</p>
-              </div>
-            )}
-          </div>
-        
+          {admin && (
+            <div>
+              <label>Department:</label>
+              <select>
+                <option value="">Select Dept</option>
+                <option value="cse">CSE</option>
+                <option value="ise">ISE</option>
+                <option value="ese">ECE</option>
+              </select>
+            </div>
+          )}
+
+          {superAdmin && (
+            <div>
+              <p className='sa'>Super Admin</p>
+            </div>
+          )}
+        </div>
+
 
         <div>
           <label>Password:</label>
