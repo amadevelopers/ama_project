@@ -52,10 +52,10 @@ class UserView(APIView):
         if not token:
             raise AuthenticationFailed("not authenticated")
         try:
-            paylod = jwt.decode(token,'secret',algorithms='HS256').decode('utf-8')
+            paylod = jwt.decode(token,'secret',algorithms='HS256')
         except jwt.ExpiredSignatureError:
             raise AuthenticationFailed("not authenticated")
-        user=User.objects.get(id=paylod['id'].first())
+        user=User.objects.get(id=paylod['id'])
         serializer=UserSerializer(user)
         return Response(serializer.data)
 class LogoutView(APIView):

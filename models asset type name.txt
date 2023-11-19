@@ -1,0 +1,9 @@
+models 
+	asset type -> name
+	asset      -> name , serial no , assey type , room ,department , targetDepartment , date , JSON
+	department -> name, building 
+	building   -> name 
+	room       -> name , department , building
+	SubAsset   -> name , purchase , JSON , asset
+	purchase   -> invoice no , date , department , seller 
+
