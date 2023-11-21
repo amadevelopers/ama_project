@@ -42,14 +42,24 @@ class AssetSerailizer(serializers.ModelSerializer):
 
 class AssetSerializerToAdd(serializers.ModelSerializer):
     department = serializers.SlugRelatedField(slug_field='name', queryset=Department.objects.all())
-    pusrchase = serializers.SlugRelatedField(slug_field='invoice_no', queryset=Purchase.objects.all())
-    asset_type = serializers.SlugField(slug_field='name',queryset=AssetType.objects.all())
+    purchase = serializers.SlugRelatedField(slug_field='invoice_no', queryset=Purchase.objects.all())
+    asset_type = serializers.SlugRelatedField(slug_field='name',queryset=AssetType.objects.all())
     class Meta:
         model = Asset
         fields = '__all__'
 
 class AssetTypeSerializerToAdd(serializers.ModelSerializer):
     class Meta:
-        model=AssetType 
-        fileds='__all__'
-        
+        model = AssetType 
+        fields='__all__'
+
+class GetAssetSpecsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=AssetType
+        fields=['specs']
+
+class SubAssetSerializerToAdd(serializers.ModelSerializer):
+    serializers.SlugRelatedField(slug_field='serial_no',queryset=Asset.objects.all())
+    class Meta:
+        model=SubAsset
+        fields='__all__'
