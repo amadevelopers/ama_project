@@ -63,3 +63,8 @@ class SubAssetSerializerToAdd(serializers.ModelSerializer):
     class Meta:
         model=SubAsset
         fields='__all__'
+
+class AssetTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=AssetType
+        fields=['name']
