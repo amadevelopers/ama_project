@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Department , Building , Room , Asset , Purchase , SubAsset , AssetType
+from .models import Department , Building , Room , Asset , Purchase , SubAsset , AssetType , Vendor
 
 
 # Register your models here.
@@ -10,3 +10,4 @@ admin.site.register(Asset)
 admin.site.register(Purchase)
 admin.site.register(SubAsset)
 admin.site.register(AssetType)
+admin.site.register(Vendor)

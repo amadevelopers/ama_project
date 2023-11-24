@@ -64,13 +64,7 @@ class SubAssetSerializerToAdd(serializers.ModelSerializer):
         model=SubAsset
         fields='__all__'
 
-<<<<<<< HEAD
 class GetVendorSerializer(serializers.ModelSerializer):
     class Meta:
         model= Vendor
-=======
-class AssetTypeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model=AssetType
->>>>>>> refs/remotes/origin/master
         fields=['name']
