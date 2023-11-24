@@ -14,11 +14,16 @@ class Room(models.Model):
     department = models.ForeignKey(Department, on_delete=models.PROTECT)
     building = models.ForeignKey(Building, on_delete=models.PROTECT)
 
+class Vendor(models.Model):
+    name = models.CharField(max_length=100,primary_key=True)
+    contact_no = models.CharField(max_length=10)
+    address = models.CharField(max_length=200)
+
 class Purchase(models.Model):
     invoice_no = models.CharField(max_length=30,primary_key=True)
     date = models.DateField()
     department = models.ForeignKey(Department, to_field='name', db_column='department_name', on_delete=models.PROTECT)
-    seller = models.CharField(max_length=100)
+    seller = models.ForeignKey(Vendor,to_field='name',db_column='vendor name',on_delete=models.PROTECT)
 
 class AssetType(models.Model):
     name=models.CharField(max_length=50,primary_key=True)

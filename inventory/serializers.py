@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Department , Building , Room , Asset , Purchase , SubAsset , AssetType
+from .models import Department , Building , Room , Asset , Purchase , SubAsset , AssetType , Vendor
 
 class BuildingSerializer(serializers.ModelSerializer):
     class Meta:
@@ -63,3 +63,8 @@ class SubAssetSerializerToAdd(serializers.ModelSerializer):
     class Meta:
         model=SubAsset
         fields='__all__'
+
+class GetVendorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model= Vendor
+        fields=['name']
