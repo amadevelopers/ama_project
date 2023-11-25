@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from .serializers import DepartmentSerializer , BuildingSerializer , RoomSerializer , SubAssetSerializer , AssetSerailizer , PurchaseSerializer ,PuchaseSerializerToAdd , AssetSerializerToAdd , AssetTypeSerializerToAdd , GetVendorSerializer , GetAssetSpecsSerializer , SubAssetSerializerToAdd
+from .serializers import DepartmentSerializer , BuildingSerializer , RoomSerializer , SubAssetSerializer , AssetSerailizer , PurchaseSerializer ,PuchaseSerializerToAdd , AssetSerializerToAdd , AssetTypeSerializerToAdd , VendorSerializer , GetAssetSpecsSerializer , SubAssetSerializerToAdd
 from .models import Department , Building , Room , Asset , SubAsset , Purchase , AssetType , Vendor
 # Create your views here.
 class GetDeparments(APIView):
@@ -72,7 +72,16 @@ class AddSubAsset(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
 class GetVendors(APIView):
-        def get(self,request):
-            vendors = Vendor.objects.all()
-            serializer=GetVendorSerializer(vendors,many=True)
-            return(serializer.data)
+    def get(self,request):
+        vendors = Vendor.objects.all()
+        serializer=VendorSerializer(vendors,many=True)
+        return(serializer.data)
+
+class AddVendors(APIView):
+    def post(self,request):
+        serializer = VendorSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    

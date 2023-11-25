@@ -64,7 +64,9 @@ class SubAssetSerializerToAdd(serializers.ModelSerializer):
         model=SubAsset
         fields='__all__'
 
-class GetVendorSerializer(serializers.ModelSerializer):
+class VendorSerializer(serializers.ModelSerializer):
     class Meta:
         model= Vendor
         fields=['name']
+
+    
