@@ -3,8 +3,13 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
+<<<<<<< HEAD
 from .serializers import DepartmentSerializer , BuildingSerializer , RoomSerializer , SubAssetSerializer , AssetSerailizer , PurchaseSerializer ,PuchaseSerializerToAdd , AssetSerializerToAdd , AssetTypeSerializerToAdd , GetVendorSerializer , GetAssetSpecsSerializer , SubAssetSerializerToAdd
 from .models import Department , Building , Room , Asset , SubAsset , Purchase , AssetType , Vendor
+=======
+from .serializers import DepartmentSerializer , BuildingSerializer , RoomSerializer , SubAssetSerializer , AssetSerailizer , PurchaseSerializer ,PuchaseSerializerToAdd , AssetSerializerToAdd , AssetTypeSerializerToAdd , GetAssetSpecsSerializer , SubAssetSerializerToAdd,AssetTypeSerializer
+from .models import Department , Building , Room , Asset , SubAsset , Purchase , AssetType
+>>>>>>> refs/remotes/origin/master
 # Create your views here.
 class GetDeparments(APIView):
     def get(self,request):
@@ -12,6 +17,12 @@ class GetDeparments(APIView):
         serializer=DepartmentSerializer(departments,many=True)
         return Response(serializer.data)
     
+class GetAssetTypes(APIView):
+    def get(self,request):
+        asset_types=AssetType.objects.all()
+        serializer=AssetTypeSerializer(asset_types,many=True)
+        return Response(serializer.data)
+
 class GetBuildings(APIView):
     def get(self,request):
         building=Building.objects.all()
