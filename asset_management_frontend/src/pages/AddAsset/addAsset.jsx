@@ -3,8 +3,9 @@ import { useParams } from 'react-router-dom';
 
 import '../../css/addAsset.css'
 import details from './tagAssetDetails.json'
-import assetTypeList from './assetType.json'
 import noTagDetails from './noTagAssetDetails.json'
+import assetTypeNew from './assetType'
+import noTagAssetDetails from './noTagAssetDetails'
 function AddAsset() {
     const [assetSubType, setassetSubType] = useState('')
     const [tagSerialNo, settagSerialNo] = useState('')
@@ -127,11 +128,19 @@ function AddAsset() {
                         <label htmlFor='assetType'>Asset Type: </label>
                         <select id='assetTypeDropdown' name='assetTpe' value={assetType} onChange={handleAssetTypeSelection} >
                             <option value="">--Select Asset Type--</option>
-                            {assetTypeList.assetTypes.map((key, value) => {
+                            {/* {assetTypeList.assetTypes.map((key, value) => {
                                 return (
                                     <option value={key}>{key}</option>
                                 )
-                            })}
+                            })} */}
+                            {
+                                Object.keys(assetTypeNew).map((key, ind) => {
+                                        return (
+                                            <>
+                                                <option key={ind}>{assetTypeNew[key].name}</option>
+                                            </>
+                                        )
+                                })}
                         </select>
                     </div>
                     {currentFormIndex < Number(qtyOfAsset) && (
@@ -167,9 +176,21 @@ function AssetDetails(props) {
         await setspecsValues({})
         props.onFormAction();
     };
+    console.log(noTagAssetDetails)
     return (
         <div className='assetDetails-from-main'>
             {assetType &&
+                // <form className='assetDetails-form' onSubmit={handleSave}>
+                //     {Object.keys(noTagDetails[assetType]).map((value, index) => {
+                //         return (
+                //             <div className='assetDetails-input' key={index}>
+                //                 <label htmlFor='specsInput'>{value}</label>
+                //                 <input type='text' value={specs[value]} onChange={(e) => handleSpecsSelection(e, value)}></input>
+                //             </div>
+                //         )
+                //     })}
+                //     <button type='submit'>Save</button>
+                // </form>
                 <form className='assetDetails-form' onSubmit={handleSave}>
                     {Object.keys(noTagDetails[assetType]).map((value, index) => {
                         return (

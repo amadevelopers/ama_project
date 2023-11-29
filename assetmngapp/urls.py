@@ -20,6 +20,6 @@ from django.conf.urls import include
 from . import view
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/',include('api.urls'))
-    # path('',view.index,name = 'index')
+    path('api/',include('api.urls')),
+    path('inventory/',include('inventory.urls'))
 ]
