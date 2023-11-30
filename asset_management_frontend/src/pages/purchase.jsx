@@ -2,6 +2,7 @@ import Header from '../components/header/header';
 import React from 'react';
 import '../css/purchase.css';
 import { useState } from "react";
+import vendorNames from './api/vendorNames';
 
 function Purchase() {  
   //   const handleSubmit = event => {
@@ -9,7 +10,7 @@ function Purchase() {
   //  alert('You have submitted the form.')
   //    }
   const [formData, setFormData] = useState({invoice: "",date:"",vendor: "",quantity:"",amount:""});
-
+  console.log(vendorNames)
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
@@ -32,11 +33,15 @@ function Purchase() {
         <input type="date" id="date" name="date" value={formData.date} onChange={handleChange}/>
 
         <label htmlFor="vendor">Vendor Name:</label>
-        <input type="text" id="vendor" name="vendor" value={formData.vendor} onChange={handleChange}/>
+        {/* <input type="text" id="vendor" name="vendor" value={formData.vendor} onChange={handleChange}/> */}
+        <select>
+          {Object.keys(vendorNames).map((index,key) => {
+            return <option key={key} value={index}>{vendorNames[index].name}</option>;
+          })}
+        </select>
 
         <label htmlFor="quantity">Quantity:</label>
         <input type="number" id="quantity" name="quantity" value={formData.quantity} onChange={handleChange}/>
-
         <label htmlFor="amount">Total Amount:</label>
         <input type="number" id="amount" name="amount" value={formData.amount} onChange={handleChange}/>
 
