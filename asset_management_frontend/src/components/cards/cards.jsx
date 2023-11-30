@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import departmentList from '../../pages/api/departmentList'
+import axios from '../../axios/axios'
 import './cards.css'
 function Cards() {
     const navigate = useNavigate();
@@ -8,6 +9,13 @@ function Cards() {
         const deptName = index.deptName;
         const id = index.id;
         navigate(`/${deptName}`)
+
+        try{
+            const depList = axios.get('/get-departments')
+            console.log(depList)
+        }catch(e) {
+            console.log(e)
+        }
     }
 
     return (
