@@ -75,7 +75,7 @@ class GetVendors(APIView):
     def get(self,request):
         vendors = Vendor.objects.all()
         serializer=VendorSerializer(vendors,many=True)
-        return(serializer.data)
+        return Response(serializer.data)
 
 class AddVendors(APIView):
     def post(self,request):
