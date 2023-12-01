@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'rest_framework',
     'corsheaders',
-    'tokenization',
+    'djauth',
     'inventory'
 
 ]
@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'assetmngapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'invendb',
+        'NAME': 'testdb',
         'USER': 'dbuser',
         'PASSWORD': 'password',
         'HOST': 'localhost',
@@ -129,7 +129,7 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'./asset_management_frontend/build/static')]
 
-AUTH_USER_MODEL='api.User'  
+AUTH_USER_MODEL='djauth.User'  
 
 
 # Default primary key field type
