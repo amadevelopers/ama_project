@@ -8,7 +8,7 @@ import AdminHomePage from '../pages/adminHomePage';
 // import CseDept from '../pages/CseDept';
 import Purchase from '../pages/purchase';
 import CseDept from '../pages/cseDeptNew';
-import Dashboard from '../pages/Dashboard';
+import Dashboard from '../pages/dashboard';
 
 import CreateAsset from '../pages/CreateAsset';
 function AppRoutes() {
