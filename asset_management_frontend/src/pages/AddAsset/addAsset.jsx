@@ -6,6 +6,7 @@ import details from './tagAssetDetails.json'
 import noTagDetails from './noTagAssetDetails.json'
 import assetTypeNew from './assetType'
 import noTagAssetDetails from './noTagAssetDetails'
+import axios from 'axios';
 function AddAsset() {
     const [assetSubType, setassetSubType] = useState('')
     const [tagSerialNo, settagSerialNo] = useState('')
@@ -25,10 +26,31 @@ function AddAsset() {
         settagSerialNo(e.target.value)
         await console.log(e.target.value)
     }
-    const handleSubmitAssetTye = (e) => {
+    const handleAssetSerialNumber = async(e) => {
         //call the api to get the specs of the asset
-        e.preventDefault()
-        settagAssetSpecsDisplay(true);
+        try{
+            e.preventDefault()
+            settagAssetSpecsDisplay(true);
+            const formData = new FormData()
+            formData.append("name",tagSerialNo)
+            formData.append("serial_no",tagSerialNo)
+
+            const assetSerialNum = await axios.post('/AddSubAsset',formData,{headers:{'Content-Type':'multipart/form-data'}})
+            console.log(assetSerialNum.status)
+        }catch(error){
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                console.error('Error data:', error.response.data);
+                console.error('Status code:', error.response.status);
+              } else if (error.request) {
+                // The request was made but no response was received
+                console.error('No response received:', error.request);
+              } else {
+                // Something happened in setting up the request that triggered an Error
+                console.error('Error message:', error.message);
+              }
+              console.error('AxiosError:', error.config);
+        }
     }
 
     const handleSubmitSpecs = async (e) => {
@@ -82,7 +104,7 @@ function AddAsset() {
             {
                 assetSubType === 'tag' &&
                 <div className='add-asset-tag-main'>
-                    <form className='add-asset-tag-sub' onSubmit={handleSubmitAssetTye}>
+                    <form className='add-asset-tag-sub' onSubmit={handleAssetSerialNumber}>
                         <label htmlFor=''>Enter the serial No of the asset</label>
                         <input type='text' name='serialNo' value={tagSerialNo} onChange={handleTagAssetSerialNo}></input>
                         <button type='submit'>Submit</button>
@@ -128,11 +150,6 @@ function AddAsset() {
                         <label htmlFor='assetType'>Asset Type: </label>
                         <select id='assetTypeDropdown' name='assetTpe' value={assetType} onChange={handleAssetTypeSelection} >
                             <option value="">--Select Asset Type--</option>
-                            {/* {assetTypeList.assetTypes.map((key, value) => {
-                                return (
-                                    <option value={key}>{key}</option>
-                                )
-                            })} */}
                             {
                                 Object.keys(assetTypeNew).map((key, ind) => {
                                         return (
@@ -180,17 +197,6 @@ function AssetDetails(props) {
     return (
         <div className='assetDetails-from-main'>
             {assetType &&
-                // <form className='assetDetails-form' onSubmit={handleSave}>
-                //     {Object.keys(noTagDetails[assetType]).map((value, index) => {
-                //         return (
-                //             <div className='assetDetails-input' key={index}>
-                //                 <label htmlFor='specsInput'>{value}</label>
-                //                 <input type='text' value={specs[value]} onChange={(e) => handleSpecsSelection(e, value)}></input>
-                //             </div>
-                //         )
-                //     })}
-                //     <button type='submit'>Save</button>
-                // </form>
                 <form className='assetDetails-form' onSubmit={handleSave}>
                     {Object.keys(noTagDetails[assetType]).map((value, index) => {
                         return (

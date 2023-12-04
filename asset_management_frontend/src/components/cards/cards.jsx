@@ -2,19 +2,34 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import departmentList from '../../pages/api/departmentList'
 import axios from '../../axios/axios'
+// import axios from 'axios'
 import './cards.css'
 function Cards() {
     const navigate = useNavigate();
     const handleClickDept = async (index) => {
-        const deptName = index.deptName;
+        const deptName = index.name;
         const id = index.id;
         navigate(`/${deptName}`)
 
         try{
-            const depList = axios.get('/get-departments')
-            console.log(depList)
-        }catch(e) {
-            console.log(e)
+            console.log(index.deptName)
+            console.log("inside try")
+            const depList = await axios.get('/GetBuildings')
+            console.log(depList.data)
+        }catch(error) {
+            // console.log("error is",e)
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                console.error('Error data:', error.response.data);
+                console.error('Status code:', error.response.status);
+              } else if (error.request) {
+                // The request was made but no response was received
+                console.error('No response received:', error.request);
+              } else {
+                // Something happened in setting up the request that triggered an Error
+                console.error('Error message:', error.message);
+              }
+              console.error('AxiosError:', error.config);
         }
     }
 

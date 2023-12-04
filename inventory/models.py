@@ -37,7 +37,6 @@ class Asset(models.Model):
     department = models.ForeignKey(Department,to_field='name',db_column='department_name', on_delete=models.PROTECT)
     purchase=models.ForeignKey(Purchase,to_field='invoice_no',db_column='purchase_invoice_no',on_delete=models.PROTECT,null=True)
     target_department= models.ForeignKey(Department,related_name='assets_moved',to_field='name',db_column='target_department_name',null=True, on_delete=models.PROTECT)
-    date = models.DateField()
     specs = models.JSONField()
 
 class SubAsset(models.Model):

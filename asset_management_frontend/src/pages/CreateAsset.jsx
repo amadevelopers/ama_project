@@ -1,46 +1,20 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../components/header/header';
 import '../css/createAsset.css';
-
+import axios from '../axios/axios';
 function CreateAsset() {
   const [name, setName] = useState();
-  const [inputFields, setInputFields] = useState([]);
-  const [showInput, setShowInput] = useState(false);
   const [assetObject, setAssetObject] = useState({});
-  
-  const handleNameChange = async(e) => {
+
+  const handleNameChange = async (e) => {
     await setName(e.target.value);
   };
 
-  const handleToggleInput = () => {
-    setInputFields([...inputFields, <input type="text"  placeholder="Enter Spec" />]);
-    setShowInput(true);
-  };
-
-  // const handleSave = () => {
-  //   if (name) {
-  //     const specs = inputFields.map((field) => field.props.value);
-  //     // console.log(inputFields)
-  //     // setAssetObject({
-  //     //   ...assetObject,
-  //     //   "name":name,
-  //     //   "specs": [...specs]
-  //     // });
-  //     console.log(inputValues)
-  //     setAssetObject({"name":name,"specs":specs})
-  //     console.log(assetObject); // Log the object to the console
-  //     setName(''); // Clear the name input field
-  //     setInputFields([]); // Clear the spec input fields
-  //   }
-  // };
-
-
-
-//added by anagha
+  //added by anagha
   const [inputCount, setInputCount] = useState(0);
   const [inputValues, setInputValues] = useState([]);
 
-  const handleAddInputField = async() => {
+  const handleAddInputField = async () => {
     await setInputCount(inputCount + 1);
     await setInputValues([...inputValues, '']); // Add an empty value for the new input field
   };
@@ -56,12 +30,40 @@ function CreateAsset() {
   }, [assetObject]);
 
 
-  const handleSave = () => {
+  const handleSave = async() => {
+    try{
       if (name) {
-      const specs = inputValues;
-      setAssetObject({ name, specs });
-      setName('');
-      setInputValues([]);
+        const specs = inputValues;
+         setAssetObject({ name, specs });
+         setName('');
+         setInputValues(['']);
+      }
+      
+      const formData = new FormData()
+        formData.append("name",assetObject.name)
+        assetObject.specs.forEach((spec, index) => {
+          formData.append(`specs[${index}]`, spec);
+        });
+
+      
+      await console.log(formData)        
+      const assetType = await axios.post('/AddAssetType',formData,{headers:{'Content-Type':'multipart/form-data'}})
+      console.log(assetType.status)
+      alert('Details uploaded successfully')
+
+    }catch(error){
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        console.error('Error data:', error.response.data);
+        console.error('Status code:', error.response.status);
+      } else if (error.request) {
+        // The request was made but no response was received
+        console.error('No response received:', error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error('Error message:', error.message);
+      }
+      console.error('AxiosError:', error.config);
     }
   };
   return (
@@ -79,25 +81,20 @@ function CreateAsset() {
         />
       </div>
 
-      {/* {showInput && inputFields.map((field, index) => (
-        <div key={index}>{field}</div>
-      ))} */}
-      {/* <button onClick={handleToggleInput}>ADD</button> */}
 
-
-{/* added by anagha */}
+      {/* added by anagha */}
       <div>
-      <button onClick={handleAddInputField}>Add </button>
+        <button onClick={handleAddInputField}>Add </button>
         {inputValues.map((value, index) => (
           <input className=''
-          key={index}
-          type="text"
-          value={value}
-          onChange={(e) => handleInputChange(index, e.target.value)}
+            key={index}
+            type="text"
+            value={value}
+            onChange={(e) => handleInputChange(index, e.target.value)}
           />
-          ))}
+        ))}
         <button onClick={handleSave}>Save</button>
-    </div>
+      </div>
     </div>
   );
 }

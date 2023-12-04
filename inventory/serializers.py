@@ -38,7 +38,7 @@ class AssetSerailizer(serializers.ModelSerializer):
     sub_asset=SubAssetSerializer()
     class Meta:
         model= Asset
-        fileds='__all__'
+        fields='__all__'
 
 class AssetSerializerToAdd(serializers.ModelSerializer):
     department = serializers.SlugRelatedField(slug_field='name', queryset=Department.objects.all())
@@ -69,4 +69,7 @@ class VendorSerializer(serializers.ModelSerializer):
         model= Vendor
         fields=['name']
 
-    
+class GetAssetSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=Asset
+        fields='__all__'

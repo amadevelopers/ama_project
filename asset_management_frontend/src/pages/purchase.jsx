@@ -3,7 +3,7 @@ import React from 'react';
 import '../css/purchase.css';
 import { useState } from "react";
 import vendorNames from './api/vendorNames';
-
+import axios from '../axios/axios';
 function Purchase() {  
   //   const handleSubmit = event => {
   //  event.preventDefault();
