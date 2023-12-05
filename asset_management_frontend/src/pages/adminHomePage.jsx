@@ -82,7 +82,7 @@ function AdminHomePage() {
                     </div>
                     <div className='action-selector'>
                         <input type='radio' name='adminAction' value='viewAsset' onChange={handleAdminAction} />
-                        <label htmlFor='adminAction'>View Existing Assets</label>
+                        <label htmlFor='adminAction'>view Existing Assets</label>
                     </div>
                     <div className='action-selector'>
                         <input type='radio' name='adminAction' value='createUser' onChange={handleAdminAction} />
