@@ -3,16 +3,22 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
+from rest_framework_simplejwt.authentication import JWTAuthentication
+from rest_framework.permissions import IsAuthenticated 
 from .serializers import DepartmentSerializer , BuildingSerializer , RoomSerializer , SubAssetSerializer , AssetSerailizer , PurchaseSerializer ,PuchaseSerializerToAdd , AssetSerializerToAdd , AssetTypeSerializerToAdd , VendorSerializer , GetAssetSpecsSerializer , SubAssetSerializerToAdd
 from .models import Department , Building , Room , Asset , SubAsset , Purchase , AssetType , Vendor
 # Create your views here.
 class GetDeparments(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
     def get(self,request):
         departments=Department.objects.all()
         serializer=DepartmentSerializer(departments,many=True)
         return Response(serializer.data)
     
 class GetBuildings(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
     def get(self,request):
         building=Building.objects.all()
         serializer=BuildingSerializer(building,many=True)
