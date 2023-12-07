@@ -2,6 +2,6 @@ django
 django-admin
 psycopg
 djangorestframework
-djangorestframework-jwt
 django[bcrypt]
 django-cors-headers
+djangorestframework-simplejwt
