@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Department , Building , Room , Asset , Purchase , SubAsset , AssetType , Vendor
+from .models import *
 
 class BuildingSerializer(serializers.ModelSerializer):
     class Meta:
@@ -73,3 +73,8 @@ class GetAssetSerializer(serializers.ModelSerializer):
     class Meta:
         model=Asset
         fields='__all__'
+
+class GetAssetTypesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model=AssetType
+        fields='__all__'  #as of now send names and specs let the frontend handle it , later make 2 api calls or find a btter way

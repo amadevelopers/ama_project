@@ -6,13 +6,33 @@ import { AddAsset } from './AddAsset/addAsset'
 import CreateAsset from './CreateAsset'
 import Header from '../components/header/header'
 import Purchase from './purchase'
+import axios from 'axios'
 
 function AdminHomePage() {
 
     const [adminAction, setadminAction] = useState('')
+    const [departmentList,setdepartmentList] = useState([{}]);
     const handleAdminAction = async (e) => {
         await setadminAction(e.target.value);
-        console.log(adminAction)
+        if(adminAction === 'invoice')
+        {
+            try{
+                const response = await axios.get('/GetVendors')
+                console.log(response.data)
+            }catch(error){
+                console.log(error.message)
+            }
+        }
+        if(adminAction === 'viewAsset'){
+            try{
+                const deptList = await axios.get('/GetBuildings')
+                setdepartmentList(deptList.data)
+                console.log(departmentList)
+                
+            }catch(error){
+                console.log(error.message)
+            }
+        }
     }
 
     const [dept, setdept] = useState('')
@@ -82,7 +102,7 @@ function AdminHomePage() {
                     </div>
                     <div className='action-selector'>
                         <input type='radio' name='adminAction' value='viewAsset' onChange={handleAdminAction} />
-                        <label htmlFor='adminAction'>view Existing Assets</label>
+                        <label htmlFor='adminAction'>View Existing Assets</label>
                     </div>
                     <div className='action-selector'>
                         <input type='radio' name='adminAction' value='createUser' onChange={handleAdminAction} />
@@ -112,7 +132,7 @@ function AdminHomePage() {
                     </div>
 
                     <div className='admin-cards-main-container'>
-                        <Cards />
+                        <Cards deptlist= {departmentList}/>
                     </div>
                 </div>
             }

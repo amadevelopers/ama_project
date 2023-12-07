@@ -13,8 +13,9 @@ function CreateAsset() {
   //added by anagha
   const [inputCount, setInputCount] = useState(0);
   const [inputValues, setInputValues] = useState([]);
-
+  const [showInputField, setshowInputField] = useState(false);
   const handleAddInputField = async () => {
+    setshowInputField(true)
     await setInputCount(inputCount + 1);
     await setInputValues([...inputValues, '']); // Add an empty value for the new input field
   };
@@ -56,13 +57,21 @@ function CreateAsset() {
         // The request was made and the server responded with a status code
         console.error('Error data:', error.response.data);
         console.error('Status code:', error.response.status);
+        alert('Something went wrong! Try again')
+
       } else if (error.request) {
         // The request was made but no response was received
         console.error('No response received:', error.request);
+        alert('Something went wrong! Try again')
+
       } else {
         // Something happened in setting up the request that triggered an Error
         console.error('Error message:', error.message);
+        alert('Something went wrong! Try again')
+
       }
+      alert('Something went wrong! Try again')
+
       console.error('AxiosError:', error.config);
     }
   };
@@ -72,29 +81,40 @@ function CreateAsset() {
       <div className="heading">
         <h1>Create Asset Type</h1>
       </div>
-      <div>
+      <div className='asset-type-main'>
         <input
           type="text"
           placeholder="Enter Asset"
           value={name}
           onChange={handleNameChange}
         />
+        <button onClick={handleAddInputField}>Add </button>
       </div>
 
 
       {/* added by anagha */}
-      <div>
-        <button onClick={handleAddInputField}>Add </button>
-        {inputValues.map((value, index) => (
-          <input className=''
-            key={index}
-            type="text"
-            value={value}
-            onChange={(e) => handleInputChange(index, e.target.value)}
-          />
-        ))}
-        <button onClick={handleSave}>Save</button>
-      </div>
+      {
+        showInputField && <div>
+          <h3>Enter the Specifications</h3>
+        <div className='specs-input'>
+          {inputValues.map((value, index) => (
+            <div className='specs-input-sub'>
+            <input className=''
+              key={index}
+              type="text"
+              value={value}
+              onChange={(e) => handleInputChange(index, e.target.value)}
+            />
+            <button onClick={handleAddInputField}>Add </button>
+            </div>
+
+          ))}
+          <button onClick={handleSave}>Save</button>
+        </div>
+
+        </div>
+
+      }
     </div>
   );
 }

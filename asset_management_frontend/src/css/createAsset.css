@@ -1,0 +1,28 @@
+.asset-type-main{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.asset-type-main input{
+    height: 2rem;
+}
+.specs-input{
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 2rem ;
+    height: 5rem;
+    /* margin: 1rem; */
+}
+
+.specs-input-sub{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.specs-input-sub input{
+    height: 2rem;
+}

@@ -20,6 +20,14 @@ function AddAsset() {
 
     const handleAssetSubType = async (e) => {
         await setassetSubType(e.target.value)
+        if(e.target.value === 'notag')
+        {
+            try{
+                // const assetTypeDropdown = await axios.get('/Get')
+            }catch(error){
+
+            }
+        }
     }
 
     const handleTagAssetSerialNo = async (e) => {
@@ -32,7 +40,6 @@ function AddAsset() {
             e.preventDefault()
             settagAssetSpecsDisplay(true);
             const formData = new FormData()
-            formData.append("name",tagSerialNo)
             formData.append("serial_no",tagSerialNo)
 
             const assetSerialNum = await axios.post('/AddSubAsset',formData,{headers:{'Content-Type':'multipart/form-data'}})

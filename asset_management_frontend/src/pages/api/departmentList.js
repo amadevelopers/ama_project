@@ -24,7 +24,7 @@ const departmentList = [
         }
     },
     {
-        "name": "ganja",
+        "name": "eee",
         "building": {
             "name": "cseblock"
         }

@@ -2,18 +2,27 @@ import Header from '../components/header/header';
 import React from 'react';
 import '../css/purchase.css';
 import { useState } from "react";
-import vendorNames from './api/vendorNames';
+// import vendorNames from './api/vendorNames';
 import axios from '../axios/axios';
-function Purchase() {  
+function Purchase(props) {  
+  const vendorNamesdropdown = props.vendors
   //   const handleSubmit = event => {
   //  event.preventDefault();
   //  alert('You have submitted the form.')
   //    }
+  const [vendorNames,setVendorNames] = useState([{}]); 
   const [formData, setFormData] = useState({invoice: "",date:"",vendor: "",quantity:"",amount:""});
-  console.log(vendorNames)
-  const handleChange = (event) => {
+  // console.log(vendorNames)
+  const handleChange = async(event) => {
     const { name, value } = event.target;
     setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+    try{
+      const response = await axios.get('/GetVendors')
+      console.log(response.data)
+      setVendorNames(response.data)
+  }catch(error){
+      console.log(error.message)
+  }
   };
 
   const handleSubmit = (event) => {

@@ -1,4 +1,4 @@
-from .views import GetDeparments ,GetVendors, GetBuildings , GetAssetsByRoom , GetRoomByDepartment , AddPurchase , GetExistingAsset,AddAssetType , AddAssets , GetAssetSpecs ,AddSubAsset
+from .views import *
 from django.urls import path
 from django.conf.urls import include
 
@@ -9,6 +9,7 @@ urlpatterns = [
     path('GetRoomByDepartment', GetRoomByDepartment.as_view()),
     path('AddPurchase',AddPurchase.as_view()),
     path('AddAssets',AddAssets.as_view()),
+    path('GetAssetTypes',GetAssetTypes.as_view()),
     path('AddAssetType',AddAssetType.as_view()),
     path('GetExistingAsset',GetExistingAsset.as_view()),
     path('GetAssetSpecs',GetAssetSpecs.as_view()),

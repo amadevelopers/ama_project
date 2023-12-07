@@ -4,7 +4,9 @@ import departmentList from '../../pages/api/departmentList'
 import axios from '../../axios/axios'
 // import axios from 'axios'
 import './cards.css'
-function Cards() {
+function Cards(props) {
+    // const departmentList = props.deptlist
+    console.log(departmentList)
     const navigate = useNavigate();
     const handleClickDept = async (index) => {
         const deptName = index.name;

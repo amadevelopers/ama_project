@@ -3,8 +3,8 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
-from .serializers import DepartmentSerializer , BuildingSerializer , RoomSerializer , SubAssetSerializer , AssetSerailizer , PurchaseSerializer ,PuchaseSerializerToAdd , AssetSerializerToAdd , AssetTypeSerializerToAdd , VendorSerializer , GetAssetSpecsSerializer , SubAssetSerializerToAdd ,GetAssetSerializer
-from .models import Department , Building , Room , Asset , SubAsset , Purchase , AssetType , Vendor
+from .serializers import *
+from .models import *
 
 # Create your views here.
 class GetDeparments(APIView):
@@ -90,7 +90,12 @@ class GetExistingAsset(APIView):
     def post(self,request):
         serial_no=request.data['serial_no']
         asset=Asset.objects.get(serial_no=serial_no)
-        serializer=GetAssetSerailizer(asset)
-        #if serializer.is_valid():
+        serializer=GetAssetSerializer(asset)
         return Response(serializer.data)
-        #return Resposne()
+    
+class GetAssetTypes(APIView):
+    def get(self,request):
+        asset_types=AssetType.objects.all()
+        serializer = GetAssetTypesSerializer(asset_types,many=True)
+        return Response(serializer.data)
+    

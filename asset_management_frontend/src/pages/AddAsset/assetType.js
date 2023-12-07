@@ -12,19 +12,13 @@ const assetTypeNew = [
         }
     },
     {
-        "name": "aids",
+        "name": "projector",
         "building": {
             "name": "cseblock"
         }
     },
     {
-        "name": "ise",
-        "building": {
-            "name": "cseblock"
-        }
-    },
-    {
-        "name": "ganja",
+        "name": "table",
         "building": {
             "name": "cseblock"
         }
