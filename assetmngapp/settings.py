@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'assetmngapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'testdb',
+        'NAME': 'invendb',
         'USER': 'dbuser',
         'PASSWORD': 'password',
         'HOST': 'localhost',
