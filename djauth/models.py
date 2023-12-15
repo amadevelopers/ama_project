@@ -14,3 +14,9 @@ class User(AbstractUser):
 
     def _str_(self):
         return self.username
+    
+    def create_superuser(self, username, email, password=None, **extra_fields):
+        user = self.create_user(username, email, password=password, is_staff=True, **extra_fields)
+        user.is_active = True
+        user.save(using=self._db)
+        return
