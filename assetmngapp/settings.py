@@ -134,7 +134,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'./asset_management_frontend/build/static')]
 
-AUTH_USER_MODEL='djauth.User'  
 
 
 # Default primary key field type
