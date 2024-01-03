@@ -8,7 +8,7 @@ function LoginPage() {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate('/admin-home');
+    navigate('/dashboard');
   }
 
   const [user, setUser] = useState(false);
@@ -33,9 +33,9 @@ function LoginPage() {
   };
 
   return (
-    <div>
+    <div className='login-main'>
       <Header />
-
+    <div className='login-sub'>
       <div className="login-form">
         <h2>Login</h2>
         <div>
@@ -91,6 +91,8 @@ function LoginPage() {
 
         <button className="home-button" onClick={handleClick}>Log In</button>
       </div>
+
+    </div>
     </div>
   );
 }

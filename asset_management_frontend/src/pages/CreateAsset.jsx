@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from '../components/header/header';
 import '../css/createAsset.css';
 import axios from '../axios/axios';
+import Sidebar from '../components/Sidebar';
 function CreateAsset() {
   const [name, setName] = useState();
   const [assetObject, setAssetObject] = useState({});
@@ -31,28 +32,28 @@ function CreateAsset() {
   }, [assetObject]);
 
 
-  const handleSave = async() => {
-    try{
+  const handleSave = async () => {
+    try {
       if (name) {
         const specs = inputValues;
-         setAssetObject({ name, specs });
-         setName('');
-         setInputValues(['']);
+        setAssetObject({ name, specs });
+        setName('');
+        setInputValues(['']);
       }
-      
-      const formData = new FormData()
-        formData.append("name",assetObject.name)
-        assetObject.specs.forEach((spec, index) => {
-          formData.append(`specs[${index}]`, spec);
-        });
 
-      
-      await console.log(formData)        
-      const assetType = await axios.post('/AddAssetType',formData,{headers:{'Content-Type':'multipart/form-data'}})
+      const formData = new FormData()
+      formData.append("name", assetObject.name)
+      assetObject.specs.forEach((spec, index) => {
+        formData.append(`specs[${index}]`, spec);
+      });
+
+
+      await console.log(formData)
+      const assetType = await axios.post('/AddAssetType', formData, { headers: { 'Content-Type': 'multipart/form-data' } })
       console.log(assetType.status)
       alert('Details uploaded successfully')
 
-    }catch(error){
+    } catch (error) {
       if (error.response) {
         // The request was made and the server responded with a status code
         console.error('Error data:', error.response.data);
@@ -76,45 +77,41 @@ function CreateAsset() {
     }
   };
   return (
-    <div>
-      {/* <Header /> */}
-      <div className="heading">
-        <h1>Create Asset Type</h1>
-      </div>
-      <div className='asset-type-main'>
-        <input
-          type="text"
-          placeholder="Enter Asset"
-          value={name}
-          onChange={handleNameChange}
-        />
-        <button onClick={handleAddInputField}>Add </button>
-      </div>
+    <div className='create-asset-type-main'>
+      <Header />
+      <div className='create-sub'>
+        <Sidebar />
+        <div className='create-sub-main-container'>
+          <div className='ceate-sub-container'>
+            <div className="heading">
+              <h1>Create Asset Type</h1>
+            </div>
+            <div className='asset-type-main'>
+              <input type="text" placeholder="Enter Asset" value={name} onChange={handleNameChange} />
+              <button onClick={handleAddInputField}>Add </button>
+            </div>
+          </div>
 
+          {/* added by anagha */}
+          {
+            showInputField && <div className='asset-specs-main'>
+              <h3>Enter the Specifications</h3>
+              <div className='specs-input'>
+                {inputValues.map((value, index) => (
+                  <div className='specs-input-sub'>
+                    <input className='' key={index} type="text" value={value} onChange={(e) => handleInputChange(index, e.target.value)} />
+                    <button onClick={handleAddInputField}>Add </button>
+                  </div>
+                ))}
+                <button onClick={handleSave}>Save</button>
+              </div>
 
-      {/* added by anagha */}
-      {
-        showInputField && <div>
-          <h3>Enter the Specifications</h3>
-        <div className='specs-input'>
-          {inputValues.map((value, index) => (
-            <div className='specs-input-sub'>
-            <input className=''
-              key={index}
-              type="text"
-              value={value}
-              onChange={(e) => handleInputChange(index, e.target.value)}
-            />
-            <button onClick={handleAddInputField}>Add </button>
             </div>
 
-          ))}
-          <button onClick={handleSave}>Save</button>
+          }
         </div>
 
-        </div>
-
-      }
+      </div>
     </div>
   );
 }

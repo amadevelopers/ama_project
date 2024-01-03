@@ -1,5 +1,5 @@
 import { useState } from 'react'
-// import '../css/dashboard.css'
+import '../css/dashboard.css'
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 import Home from '../components/Home'

@@ -1,8 +1,39 @@
-.asset-type-main{
+.create-asset-type-main{
+    height: 100%;
+    width: 100%;
+    background-color: #263043;
+}
+.create-sub{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+}
+.create-sub-main-container{
+    width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
+    border-left:  0.5rem solid #ffff; 
+}
+.ceate-sub-container{
+    width: 100%;
+    height: 50%;
+    padding-top: 20rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.asset-type-main{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .asset-type-main input{
     height: 2rem;
@@ -25,4 +56,12 @@
 
 .specs-input-sub input{
     height: 2rem;
+}
+
+.asset-specs-main{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
