@@ -72,7 +72,7 @@ function CreateAsset() {
             <div className='asset-type-main'>
               <div>
                 <input type="text" placeholder="Enter Asset" value={name} onChange={handleNameChange} />
-                <button onClick={handleCreateAsset}>Create</button>
+                <button onClick={handleCreateAsset}>Create Asset</button>
               </div>
               {showInputField && (
                 <div className='asset-specs-main'>
