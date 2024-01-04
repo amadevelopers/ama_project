@@ -6,6 +6,13 @@ from rest_framework import status
 from .serializers import *
 from .models import *
 
+#l
+from django.shortcuts import get_object_or_404
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from fuzzywuzzy import fuzz, process
+from .models import Asset
+
 # Create your views here.
 class GetDeparments(APIView):
     def get(self,request):
@@ -99,3 +106,29 @@ class GetAssetTypes(APIView):
         serializer = GetAssetTypesSerializer(asset_types,many=True)
         return Response(serializer.data)
     
+
+def search_assets(request):
+    try:
+        if request.method == 'POST':
+            search_string = request.POST.get('search_string')
+
+            if not search_string:
+                return JsonResponse({"error": "Search string is required"}, status=400)
+
+            assets = Asset.objects.all()
+
+            # Perform fuzzy search
+            matching_assets = process.extract(
+                search_string, assets, scorer=fuzz.partial_ratio, score_cutoff=80
+            )
+
+            # Extract matched assets
+            matched_assets = [asset[0] for asset in matching_assets]
+
+            # Convert to JSON format
+            response_data = [{"name": asset.name, "serial_no": asset.serial_no} for asset in matched_assets]
+
+            return JsonResponse({"matched_assets": response_data})
+
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=500)

@@ -1,6 +1,7 @@
 from .views import *
 from django.urls import path
 from django.conf.urls import include
+from .views import search_assets
 
 urlpatterns = [
     path('GetDepartment', GetDeparments.as_view()),
@@ -14,5 +15,7 @@ urlpatterns = [
     path('GetExistingAsset',GetExistingAsset.as_view()),
     path('GetAssetSpecs',GetAssetSpecs.as_view()),
     path('AddSubAsset',AddSubAsset.as_view()),
-    path('GetVendors',GetVendors.as_view())
+    path('GetVendors',GetVendors.as_view()),
+    
+    path('search_assets/', search_assets, name='search_assets')
 ]
