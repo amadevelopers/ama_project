@@ -13,7 +13,7 @@ function CreateAsset() {
 
   const handleNameChange = (e) => {
     setName(e.target.value);
-    setAddButtonDisabled(!e.target.value); // Enable "Add" button when there is an asset name
+    setAddButtonDisabled(!e.target.value); // Enable "Add" hmbutton when there is an asset name
   };
 
   const handleCreateAsset = () => {

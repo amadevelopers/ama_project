@@ -1,24 +1,34 @@
-.create-asset-type-main{
-    height: 100%;
+/* Resetting some default styles for better consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .create-asset-type-main {
+    height: 100vh;
     width: 100%;
     background-color: #263043;
-}
-.create-sub{
+    display: flex;
+  }
+  
+  .create-sub {
     height: 100%;
     width: 100%;
     display: flex;
-    /* justify-content: center;
-    align-items: center; */
-}
-.create-sub-main-container{
+  }
+  
+  .create-sub-main-container {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-left:  0.5rem solid #ffff; 
-}
-.ceate-sub-container{
+    border-left: 0.5rem solid #ffff;
+  }
+  
+  .create-sub-container {
     width: 100%;
     height: 50%;
     padding-top: 20rem;
@@ -26,42 +36,71 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.asset-type-main{
+  }
+  
+  .asset-type-main {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-.asset-type-main input{
+  }
+  
+  .asset-type-main input {
     height: 2rem;
-}
-.specs-input{
+    margin-bottom: 1rem;
+  }
+  
+  .specs-input {
     display: flex;
     flex-direction: column;
     width: 30%;
-    padding: 2rem ;
+    padding: 2rem;
     height: 5rem;
-    /* margin: 1rem; */
-}
-
-.specs-input-sub{
+  }
+  
+  .specs-input-sub {
     display: flex;
     justify-content: center;
     align-items: center;
-
-}
-
-.specs-input-sub input{
+    margin-bottom: 1rem;
+  }
+  
+  .specs-input-sub input {
     height: 2rem;
-}
-
-.asset-specs-main{
+  }
+  
+  .asset-specs-main {
     width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+  }
+  
+  /* Styling for the heading */
+  .heading h1 {
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  
+  /* Styling for the buttons */
+  button {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    border: none;
+    background-color: #4910e6;
+    color: #fff;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:disabled {
+    background-color: #7f8c8d;
+    cursor: not-allowed;
+  }
+  
+ 
