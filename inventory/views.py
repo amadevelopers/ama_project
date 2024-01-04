@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from rest_framework import status
 from .serializers import *
 from .models import *
+from djauth.models import *
 
 # Create your views here.
 class GetDeparments(APIView):
@@ -99,3 +100,18 @@ class GetAssetTypes(APIView):
         serializer = GetAssetTypesSerializer(asset_types,many=True)
         return Response(serializer.data)
     
+class Dashboard(APIView):
+    def get(self,request):
+        assets=Asset.objects.all().count()
+        buildings = Building.objects.all().count()
+        departments = Department.objects.all().count()
+        users = User.objects.all().count()
+        unallocated = Asset.objects.filter(target_department__isnull=True)
+        data = {
+            "assets":assets,
+            "buildings":buildings,
+            "departments":departments,
+            "users":users,
+            "unallocated":unallocated
+        }
+        return Response(data=data)
