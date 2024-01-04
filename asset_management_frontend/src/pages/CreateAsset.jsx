@@ -13,7 +13,7 @@ function CreateAsset() {
 
   const handleNameChange = (e) => {
     setName(e.target.value);
-    setAddButtonDisabled(!e.target.value); // Enable "Add" hmbutton when there is an asset name
+    setAddButtonDisabled(!e.target.value); // Enable "Add" button when there is an asset name
   };
 
   const handleCreateAsset = () => {
@@ -21,7 +21,9 @@ function CreateAsset() {
   };
 
   const handleAddInputField = () => {
-    setInputValues([...inputValues, '']);
+    if (inputValues.every(value => value.trim() !== '')) {
+      setInputValues([...inputValues, '']);
+    }
   };
 
   const handleInputChange = (index, value) => {
@@ -37,7 +39,7 @@ function CreateAsset() {
   const handleSave = async () => {
     try {
       if (name) {
-        const specs = inputValues;
+        const specs = inputValues.filter(value => value.trim() !== ''); // Filter out empty values
         setAssetObject({ name, specs });
         setName('');
         setInputValues(['']);
@@ -69,26 +71,24 @@ function CreateAsset() {
             <div className="heading">
               <h1>Create Asset Type</h1>
             </div>
-            <div className='asset-type-main'>
-              <div>
-                <input type="text" placeholder="Enter Asset" value={name} onChange={handleNameChange} />
-                <button onClick={handleCreateAsset}>Create Asset</button>
-              </div>
-              {showInputField && (
-                <div className='asset-specs-main'>
-                  <h3>Enter Specs</h3>
-                  <div className='specs-input'>
-                    {inputValues.map((value, index) => (
-                      <div className='specs-input-sub' key={index}>
-                        <input type="text" value={value} onChange={(e) => handleInputChange(index, e.target.value)} />
-                      </div>
-                    ))}
-                    <button onClick={handleAddInputField} disabled={isAddButtonDisabled}>Add</button>
-                    <button onClick={handleSave}>Save</button>
-                  </div>
-                </div>
-              )}
+            <div className='asset-type'>
+              <input type="text" placeholder="Enter Asset" value={name} onChange={handleNameChange} />
+              <button onClick={handleCreateAsset}>Create Asset</button>
             </div>
+            {showInputField && (
+              <div className='asset-specs-main'>
+                <h3>Enter Specs</h3>
+                <div className='specs-input'>
+                  {inputValues.map((value, index) => (
+                    <div className='specs-input-sub' key={index}>
+                      <input type="text" value={value} onChange={(e) => handleInputChange(index, e.target.value)} />
+                    </div>
+                  ))}
+                  <button onClick={handleAddInputField} disabled={isAddButtonDisabled}>Add</button>
+                  <button onClick={handleSave}>Save</button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
