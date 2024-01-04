@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
-
+import Header from '../../components/Header'
+import Sidebar from '../../components/Sidebar'
 import '../../css/addAsset.css'
 import details from './tagAssetDetails.json'
 import noTagDetails from './noTagAssetDetails.json'
@@ -94,87 +95,96 @@ function AddAsset() {
 
     return (
         <div className='add-asset-main-container'>
-            <div className='add-asset-radio-selector'>
-                <h3>Enter the type of Asset</h3>
-                <div className='asset-radio-main-container'>
-                    <div className='asset-type-selector'>
-                        <input type='radio' name='tag' value='tag' onChange={handleAssetSubType}></input>
-                        <label htmlFor='typeOfAsset'>Tag</label>
-                    </div>
-                    <div className='asset-type-selector'>
-                        <input type='radio' name='tag' value='notag' onChange={handleAssetSubType}></input>
-                        <label htmlFor='typeOfAsset'>No Tag</label>
-                    </div>
-                </div>
+            <div className='add-asset-header'>
+                <Header/>
             </div>
-
-            {
-                assetSubType === 'tag' &&
-                <div className='add-asset-tag-main'>
-                    <form className='add-asset-tag-sub' onSubmit={handleAssetSerialNumber}>
-                        <label htmlFor=''>Enter the serial No of the asset</label>
-                        <input type='text' name='serialNo' value={tagSerialNo} onChange={handleTagAssetSerialNo}></input>
-                        <button type='submit'>Submit</button>
-                    </form>
-                    {
-                        tagAssetSpecsDisplay &&
-                        <div className='tag-assets-specs-main'>
-                            <p>{details[1].assetType}</p>
-                            <div className='tag-assets-container'>
-                                {Object.keys(details[1].specifications).map((key, value) => {
-                                    return (
-                                        <div className='tag-assets-specs-sub'>
-                                            <p>{key}</p>
-                                            <p>{details[1].specifications[key]}</p>
-                                        </div>
-                                    )
-                                })}
+            <div className='add-asset-sub-container'>
+                <div>
+                    <Sidebar/>
+                </div>
+                    <div className='add-asset-radio-selector'>
+                        <h3>Enter the type of Asset</h3>
+                        <div className='asset-radio-main-container'>
+                            <div className='asset-type-selector'>
+                                <input type='radio' name='tag' value='tag' onChange={handleAssetSubType}></input>
+                                <label htmlFor='typeOfAsset'>Tag</label>
                             </div>
-                            <form className='tag-form' onSubmit={handleSubmitSpecs}>
-                                <div className='tag-edit-specs'>
-                                    <label htmlFor='editSpecs'>Enter the specification which you would like to change</label>
-                                    <input type='text' name='editSpecs' value={specsToBeEdited} onChange={(e) => setspecsToBeEdited(e.target.value)}></input>
-                                </div>
-                                <div className='tag-new-specs'>
-                                    <label htmlFor='editSpecs'>Enter the new value </label>
-                                    <input type='text' name='newSpecs' value={newSpecsValue} onChange={(e) => setnewSpecsValue(e.target.value)}></input>
-                                </div>
-                                <button type="submit">Submit</button>
+                            <div className='asset-type-selector'>
+                                <input type='radio' name='tag' value='notag' onChange={handleAssetSubType}></input>
+                                <label htmlFor='typeOfAsset'>No Tag</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    {
+                        assetSubType === 'tag' &&
+                        <div className='add-asset-tag-main'>
+                            <form className='add-asset-tag-sub' onSubmit={handleAssetSerialNumber}>
+                                <label htmlFor=''>Enter the serial No of the asset</label>
+                                <input type='text' name='serialNo' value={tagSerialNo} onChange={handleTagAssetSerialNo}></input>
+                                <button type='submit'>Submit</button>
                             </form>
+                            {
+                                tagAssetSpecsDisplay &&
+                                <div className='tag-assets-specs-main'>
+                                    <p>{details[1].assetType}</p>
+                                    <div className='tag-assets-container'>
+                                        {Object.keys(details[1].specifications).map((key, value) => {
+                                            return (
+                                                <div className='tag-assets-specs-sub'>
+                                                    <p>{key}</p>
+                                                    <p>{details[1].specifications[key]}</p>
+                                                </div>
+                                            )
+                                        })}
+                                    </div>
+                                    <form className='tag-form' onSubmit={handleSubmitSpecs}>
+                                        <div className='tag-edit-specs'>
+                                            <label htmlFor='editSpecs'>Enter the specification which you would like to change</label>
+                                            <input type='text' name='editSpecs' value={specsToBeEdited} onChange={(e) => setspecsToBeEdited(e.target.value)}></input>
+                                        </div>
+                                        <div className='tag-new-specs'>
+                                            <label htmlFor='editSpecs'>Enter the new value </label>
+                                            <input type='text' name='newSpecs' value={newSpecsValue} onChange={(e) => setnewSpecsValue(e.target.value)}></input>
+                                        </div>
+                                        <button type="submit">Submit</button>
+                                    </form>
+                                </div>
+                            }
                         </div>
                     }
-                </div>
-            }
 
-            {
-                assetSubType === 'notag' &&
-                <div className='notag-main-container'>
-                    <div className='notag-sub-container'>
-                        <label htmlFor='qtyOfAsset'>Enter the quantity of assets to be added</label>
-                        <input type='number' name='qtyOfAsset' value={qtyOfAsset} onChange={(e) => setqtyOfAsset(e.target.value)}></input>
-                    </div>
-                    <div className='notag-asset-type-dropdown'>
-                        <label htmlFor='assetType'>Asset Type: </label>
-                        <select id='assetTypeDropdown' name='assetTpe' value={assetType} onChange={handleAssetTypeSelection} >
-                            <option value="">--Select Asset Type--</option>
-                            {
-                                Object.keys(assetTypeNew).map((key, ind) => {
-                                        return (
-                                            <>
-                                                <option key={ind}>{assetTypeNew[key].name}</option>
-                                            </>
-                                        )
-                                })}
-                        </select>
-                    </div>
-                    {currentFormIndex < Number(qtyOfAsset) && (
-                        <div className='notag-forms' key={currentFormIndex}>
-                            <AssetDetails assetType={assetType} onDataUpdate={handleformSubmitted} onFormAction={handleFormSubmit} />
+                    {
+                        assetSubType === 'notag' &&
+                        <div className='notag-main-container'>
+                            <div className='notag-sub-container'>
+                                <label htmlFor='qtyOfAsset'>Enter the quantity of assets to be added</label>
+                                <input type='number' name='qtyOfAsset' value={qtyOfAsset} onChange={(e) => setqtyOfAsset(e.target.value)}></input>
+                            </div>
+                            <div className='notag-asset-type-dropdown'>
+                                <label htmlFor='assetType'>Asset Type: </label>
+                                <select id='assetTypeDropdown' name='assetTpe' value={assetType} onChange={handleAssetTypeSelection} >
+                                    <option value="">--Select Asset Type--</option>
+                                    {
+                                        Object.keys(assetTypeNew).map((key, ind) => {
+                                                return (
+                                                    <>
+                                                        <option key={ind}>{assetTypeNew[key].name}</option>
+                                                    </>
+                                                )
+                                        })}
+                                </select>
+                            </div>
+                            {currentFormIndex < Number(qtyOfAsset) && (
+                                <div className='notag-forms' key={currentFormIndex}>
+                                    <AssetDetails assetType={assetType} onDataUpdate={handleformSubmitted} onFormAction={handleFormSubmit} />
+                                </div>
+                            )}
+
                         </div>
-                    )}
+                    }
 
-                </div>
-            }
+            </div>
         </div>
     )
 }

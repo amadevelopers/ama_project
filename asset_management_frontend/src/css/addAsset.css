@@ -1,8 +1,24 @@
-/* .add-asset-main-container{
-    background-color: #fff;
-
-} */
-
+.add-asset-main-container{
+    width: 100%;    
+    background-color: #263043;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.add-asset-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.add-asset-sub-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .add-asset-radio-selector{
     width: 100%;
     display: flex;
