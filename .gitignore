@@ -2,3 +2,4 @@
 amaenv/
 **/migrations/
 db.sqlite3
+Liksenv/
