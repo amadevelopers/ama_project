@@ -1,10 +1,11 @@
 import React from 'react';
 import sitLogo from '../assets/images/sit.png'
-
+import { useNavigate } from 'react-router-dom';
 export default function Header() {
+  const navigate = useNavigate()
   const handleClick = () => {
     // Navigate to Google
-    window.location.href = 'https://www.google.com';
+    navigate("/dashboard")
   };
 
   return (

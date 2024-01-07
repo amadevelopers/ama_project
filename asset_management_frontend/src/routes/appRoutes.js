@@ -18,12 +18,13 @@ function AppRoutes() {
                 {/* <Route path="/" element={<AdminHomePage/>}/> */}
                 <Route path="/"  element={<LoginPage/>} />
                 <Route path="/:deptName" element={<CseDept/>}/>
-                <Route path="/dashboard" element={<Dashboard/>}/>                
+                {/* <Route path="/dashboard/:value" element={<Dashboard/>}/>                 */}
+                <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="/purchases" element={<Purchase/>}/>
                 <Route path="/createAssetType" element={<CreateAsset/>}/>
                 <Route path="/addAsset" element={<AddAsset/>}/>
                 <Route path="/viewAsset" element={<AddAsset/>}/>
-                <Route path="/user" element={<Purchase/>}/>
+                <Route path="/create-user" element={<LoginPage/>}/>
 
             </Routes>
         </div>

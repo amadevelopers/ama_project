@@ -3,8 +3,11 @@ import '../css/dashboard.css'
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 import Home from '../components/Home'
-function Dashboard() {
-    const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
+function Dashboard(props) {
+  const assets = props?.state?.assets;
+  console.log(assets);
+  console.log(props)
+      const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
 
     const OpenSidebar = () => {
       setOpenSidebarToggle(!openSidebarToggle)

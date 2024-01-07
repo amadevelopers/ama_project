@@ -85,7 +85,7 @@ class AddVendors(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)\
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class GetExistingAsset(APIView):
     def post(self,request):
@@ -106,7 +106,7 @@ class Dashboard(APIView):
         buildings = Building.objects.all().count()
         departments = Department.objects.all().count()
         users = User.objects.all().count()
-        unallocated = Asset.objects.filter(target_department__isnull=True)
+        unallocated = Asset.objects.filter(target_department__isnull=True).count()
         data = {
             "assets":assets,
             "buildings":buildings,
