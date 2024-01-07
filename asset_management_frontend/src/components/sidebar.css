@@ -8,6 +8,8 @@
     position: fixed;
     width: 260px;
     margin-top: 25px;
+    border-right:  0.2rem solid #ffff; 
+
   }
   
   /* Sidebar Title */

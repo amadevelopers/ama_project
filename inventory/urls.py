@@ -14,5 +14,6 @@ urlpatterns = [
     path('GetExistingAsset',GetExistingAsset.as_view()),
     path('GetAssetSpecs',GetAssetSpecs.as_view()),
     path('AddSubAsset',AddSubAsset.as_view()),
-    path('GetVendors',GetVendors.as_view())
+    path('GetVendors',GetVendors.as_view()),
+    path('Dashboard',Dashboard.as_view())
 ]

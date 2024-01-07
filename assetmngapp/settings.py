@@ -134,7 +134,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR,'./asset_management_frontend/build/static')]
 
-AUTH_USER_MODEL='djauth.User'  
 
 
 # Default primary key field type
@@ -145,23 +144,21 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOW_ALL=True
 CORS_ALLOW_CREDENTIALS=True
 
+
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+
 PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
-    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
-    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
-    "django.contrib.auth.hashers.Argon2PasswordHasher",
-    "django.contrib.auth.hashers.ScryptPasswordHasher",
 ]
 
 REST_FRAMEWORK = {
+
     'DEFAULT_AUTHENTICATION_CLASSES': (
+      
         'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
-}
-SIMPLE_JWT = {
-    'AUTH_HEADER_TYPES': ('JWT'),
+    )
+
 }

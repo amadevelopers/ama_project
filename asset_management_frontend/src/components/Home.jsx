@@ -1,4 +1,5 @@
 import React from 'react';
+import './Home.css'
 import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill } from 'react-icons/bs';
 
 function Home() {

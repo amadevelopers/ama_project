@@ -1,5 +1,26 @@
-.wrapper {
-    padding: 5px 20px;
+.purchase-main{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
 }
 
+.wrapper {
+    /* padding: 5px 20px; */
+    /* display: flex; */
+    height: 100%;
+}
+.purchase-form{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
  
+.purchase-sub{
+    padding: 1rem;
+    width: 50%;
+}

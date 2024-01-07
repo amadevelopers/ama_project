@@ -1,6 +1,26 @@
 .add-asset-main-container{
-    /* background-color: #fff; */
-
+    width: 100%;    
+    background-color: #263043;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+.add-asset-header{
+    width: 100%;
+    height: 15vh;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+}
+.add-asset-sub-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .add-asset-radio-selector{
@@ -17,7 +37,7 @@
     align-items: center;
 }
 .asset-type-selector{
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,6 +62,7 @@
 /* Styling for the 'tag' section of AddAsset component */
 .add-asset-tag-main {
     margin-top: 2rem;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,7 +70,7 @@
 }
 
 .add-asset-tag-sub {
-    width: 60%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -112,7 +133,7 @@
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border: 1px solid #030d5c;
+    border: 1px solid #2f45ec;
     margin-bottom: 1rem;
     border-radius: 5px;
 }
@@ -182,6 +203,7 @@ button:hover {
 /* Styling for 'notag' section */
 .notag-main-container {
     margin-top: 4rem;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;

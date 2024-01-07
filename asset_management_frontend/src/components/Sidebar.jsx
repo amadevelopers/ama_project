@@ -1,5 +1,6 @@
 import React from 'react'
-// import './sidebar.css'
+import './sidebar.css'
+import {Link} from 'react-router-dom'
 import 
 {BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
   BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
@@ -23,30 +24,30 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
 
 
             <li className='sidebar-list-item'>
-                <a href="">
+                <Link exact to="/purchases">
                     <BsGrid1X2Fill className='icon'/>  Purchases
-                </a>
+                </Link>
             </li>
             <li className='sidebar-list-item'>
-                <a href="">
+                <Link exact to="/createAssetType">
                     <BsFillArchiveFill className='icon'/> Create Asset Type
-                </a>
+                </Link>
             </li>
             <li className='sidebar-list-item'>
-                <a href="">
+                <Link exact to="/addAsset">
                     <BsFillGrid3X3GapFill className='icon'/> Add Asset
-                </a>
+                </Link>
             </li>
             <li className='sidebar-list-item'>
-                <a href="">
+                <Link exact to="/view-asset">
                 <BsListCheck className='icon'/> View Existing Assets
-                </a>
+                </Link>
             </li>
             <li className='sidebar-list-item'>
-                <a href="">
+                <Link exact to="/create-user">
                     
                     <BsPeopleFill className='icon'/> Create User
-                </a>
+                </Link>
             </li>
             
         </ul>

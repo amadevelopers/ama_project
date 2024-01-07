@@ -1,7 +1,17 @@
 /* Center the login form with margin-top for spacing */
+
+.login-main{
+    height: 100vh;
+}
+.login-sub{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+}
 .login-form {
     width: 300px;
-    margin: 20rem auto;
+    /* margin: 20rem auto; */
     /* Add margin-top for spacing */
     padding: 20px;
     border: 1px solid #ccc;
