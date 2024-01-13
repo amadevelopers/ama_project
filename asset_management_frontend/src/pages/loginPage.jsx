@@ -13,6 +13,7 @@ function LoginPage() {
       const response = await axios.get("/Dashboard")
       console.log(response.data)
       const value = response.data
+      
       console.log(value)
       // navigate(`/dashboard/${value}`);
       // navigate({
