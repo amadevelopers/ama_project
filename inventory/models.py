@@ -17,7 +17,7 @@ class Room(models.Model):
 class Vendor(models.Model):
     name = models.CharField(max_length=100,primary_key=True)
     contact_no = models.CharField(max_length=10)
-    address = models.CharField(max_length=200)
+    address = models.CharField(max_length=200) 
 
 class Purchase(models.Model):
     invoice_no = models.CharField(max_length=30,primary_key=True)

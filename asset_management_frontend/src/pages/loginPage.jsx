@@ -2,13 +2,29 @@ import React, { useState } from 'react';
 import Header from '../components/header/header';
 import { Link, useNavigate } from 'react-router-dom';
 import '../css/loginPage.css'
+import axios from '../axios/axios';
 
 function LoginPage() {
 
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate('/dashboard');
+  const handleClick = async() => {
+    try{
+      const response = await axios.get("/Dashboard")
+      console.log(response.data)
+      const value = response.data
+      
+      console.log(value)
+      // navigate(`/dashboard/${value}`);
+      // navigate({
+      //   pathname: `/dashboard`,
+      //   state: { assets: value },
+      // });
+      navigate(`/dashboard`, { state: { assets: value } });
+
+    }catch(err){
+      console.log(err.message)
+    }
   }
 
   const [user, setUser] = useState(false);
