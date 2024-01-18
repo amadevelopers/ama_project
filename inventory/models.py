@@ -45,3 +45,18 @@ class SubAsset(models.Model):
     purchase = models.ForeignKey(Purchase,to_field='invoice_no',db_column='purchase_invoice_no',on_delete=models.PROTECT)
     specs = models.JSONField()
     asset = models.ForeignKey(Asset,to_field='serial_no',db_column='asset_serial_no' ,on_delete=models.PROTECT)
+
+class Search(APIView):
+    def post(self,request):
+        test=request.data["query"]
+        result = Asset.objects.annotate(
+    similarity=TrigramSimilarity("name", test) +
+               TrigramSimilarity("serial_no", test) +
+               TrigramSimilarity("asset_type__name", test) +
+               TrigramSimilarity("room__name", test) +
+               TrigramSimilarity("department__name", test) +
+               TrigramSimilarity("purchase__invoice_no", test) +
+               TrigramSimilarity("target_department__name", test)
+).filter(similarity__gt=0.3).order_by("-similarity")
+        serializer=GetAssetSerializer(result,many=True)
+        return Response(serializer.data)
