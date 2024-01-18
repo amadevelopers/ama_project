@@ -6,6 +6,7 @@ from rest_framework import status
 from .serializers import *
 from .models import *
 from djauth.models import *
+from django.contrib.postgres.search import TrigramSimilarity
 
 # Create your views here.
 class GetDeparments(APIView):
@@ -115,3 +116,18 @@ class Dashboard(APIView):
             "unallocated":unallocated
         }
         return Response(data=data)
+
+class Search(APIView):
+    def post(self,request):
+        search_string=request.data["query"]
+        result = Asset.objects.annotate(
+    similarity=TrigramSimilarity("name", search_string) +
+               TrigramSimilarity("serial_no", search_string) +
+               TrigramSimilarity("asset_type__name", search_string) +
+               TrigramSimilarity("room__name", search_string) +
+               TrigramSimilarity("department__name", search_string) +
+               TrigramSimilarity("purchase__invoice_no", search_string) +
+               TrigramSimilarity("target_department__name", search_string)
+).filter(similarity__gt=0.3).order_by("-similarity")
+        serializer=GetAssetSerializer(result,many=True)
+        return Response(serializer.data)

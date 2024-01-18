@@ -45,3 +45,4 @@ class SubAsset(models.Model):
     purchase = models.ForeignKey(Purchase,to_field='invoice_no',db_column='purchase_invoice_no',on_delete=models.PROTECT)
     specs = models.JSONField()
     asset = models.ForeignKey(Asset,to_field='serial_no',db_column='asset_serial_no' ,on_delete=models.PROTECT)
+
