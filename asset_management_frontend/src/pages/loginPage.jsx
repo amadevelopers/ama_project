@@ -11,15 +11,10 @@ function LoginPage() {
   const handleClick = async() => {
     try{
       const response = await axios.get("/Dashboard")
-      console.log(response.data)
+      // console.log(response.data)
       const value = response.data
       
-      console.log(value)
-      // navigate(`/dashboard/${value}`);
-      // navigate({
-      //   pathname: `/dashboard`,
-      //   state: { assets: value },
-      // });
+      // console.log(value)
       navigate(`/dashboard`, { state: { assets: value } });
 
     }catch(err){
