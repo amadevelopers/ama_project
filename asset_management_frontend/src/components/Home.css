@@ -4,3 +4,23 @@
 .main-title{
     padding-top: 3rem;
 }
+.sub-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+.chart {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px; /* Adjust the width based on your design */
+  }
+  
+  .chart h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+  }

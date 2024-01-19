@@ -2,12 +2,13 @@ import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import Header from '../../components/Header'
 import Sidebar from '../../components/Sidebar'
-import '../../css/addAsset.css'
+// import '../../css/addAsset.css'
 import details from './tagAssetDetails.json'
 import noTagDetails from './noTagAssetDetails.json'
 import assetTypeNew from './assetType'
 import noTagAssetDetails from './noTagAssetDetails'
 import axios from 'axios';
+import '../../css/addAssetNew.css'
 function AddAsset() {
     const [assetSubType, setassetSubType] = useState('')
     const [tagSerialNo, settagSerialNo] = useState('')
