@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import sitLogo from '../assets/images/sit.png'
 import { useNavigate } from 'react-router-dom';
 import './Header.css'
@@ -28,13 +28,18 @@ export default function Header() {
       const searchObj = {
         "query":searchTerm
       }
-      const response = await axios.post("/Search", { searchObj },{ headers: { 'Content-Type': 'multipart/form-data' } });
+      const response = await axios.post("/Search",  searchObj ,{ headers: { 'Content-Type': 'application/json' }  });
       setSearchResults(response.data.results);
       console.log(searchResults)
     }catch(err){
       console.log(err.message)
     }
   }
+
+  useEffect(() => {
+    // Log searchResults whenever it changes
+    console.log(searchResults);
+  }, [searchResults]);
   return (
     <div>
       <header>
