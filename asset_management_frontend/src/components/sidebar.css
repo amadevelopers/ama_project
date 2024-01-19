@@ -6,10 +6,7 @@
     transition: all 0.5s;
     -webkit-transition: all 0.5s;
     position: fixed;
-    width: 260px;
-    margin-top: 25px;
     border-right:  0.2rem solid #ffff; 
-
   }
   
   /* Sidebar Title */
@@ -17,9 +14,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 30px 0px 30px;
-    margin-bottom: 30px;
+    /* padding: 20px 30px 0px 30px; */
+    /* margin-bottom: 30px; */
+  
   }
+  
   
   .sidebar-title > span {
     display: none;
