@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import sitLogo from '../assets/images/sit.png'
 import { useNavigate } from 'react-router-dom';
 import './Header.css'
-import axios from 'axios';
+import axios from '../axios/axios';
 export default function Header() {
   const navigate = useNavigate()
   const handleClick = () => {
@@ -24,7 +24,11 @@ export default function Header() {
     }
 
     try{
-      const response = await axios.post("http://127.0.0.1:9000/inventory/Search", { searchTerm });
+      console.log(searchTerm)
+      const searchObj = {
+        "query":searchTerm
+      }
+      const response = await axios.post("/Search", { searchObj },{ headers: { 'Content-Type': 'multipart/form-data' } });
       setSearchResults(response.data.results);
       console.log(searchResults)
     }catch(err){
