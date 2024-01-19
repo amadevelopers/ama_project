@@ -29,7 +29,7 @@ export default function Header() {
         "query":searchTerm
       }
       const response = await axios.post("/Search",  searchObj ,{ headers: { 'Content-Type': 'application/json' }  });
-      setSearchResults(response.data.results);
+      setSearchResults(response.data);
       console.log(searchResults)
     }catch(err){
       console.log(err.message)
