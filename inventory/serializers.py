@@ -31,14 +31,16 @@ class PuchaseSerializerToAdd(serializers.ModelSerializer):
 
 class SubAssetSerializer(serializers.ModelSerializer):
     class Meta:
-        model=SubAsset
-        feilds='__all__'
+        model = SubAsset
+        fields = '__all__'
 
-class AssetSerailizer(serializers.ModelSerializer):
-    sub_asset=SubAssetSerializer()
+class AssetSerializer(serializers.ModelSerializer):
+    sub_assets = SubAssetSerializer(many=True, read_only=True)
+
     class Meta:
-        model= Asset
-        fields='__all__'
+        model = Asset
+        fields = '__all__'
+
 
 class AssetSerializerToAdd(serializers.ModelSerializer):
     department = serializers.SlugRelatedField(slug_field='name', queryset=Department.objects.all())

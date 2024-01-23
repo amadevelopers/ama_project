@@ -22,13 +22,35 @@
 }
 .contents
 {
-    height: 100%;
-    width: 85%;
+    /* height: 100%; */
+    width: 100%;
     display: flex;
     /* flex-direction: column; */
     justify-content: space-around;
     align-items:flex-start;
+    padding-bottom: 2rem;
 }
 .contents-sub{
     margin-top: 10%;
+}
+.view-asset-button{
+    /* padding-top: 4rem; */
+    margin-top: 8%;
+}
+
+.view-asset-main-page{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+}
+.view-table{
+    display: flex;
+    width: 100%;
+    /* background-color: aqua; */
+}
+
+
+
+.view-table-main-div{
+    width: 100%;
 }
