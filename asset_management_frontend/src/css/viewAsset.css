@@ -46,6 +46,7 @@
 .view-table{
     display: flex;
     width: 100%;
+    
     /* background-color: aqua; */
 }
 
@@ -53,4 +54,6 @@
 
 .view-table-main-div{
     width: 100%;
+    padding-left: 8.5%;
+    
 }
