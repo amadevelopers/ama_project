@@ -5,7 +5,7 @@ import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
 import Home from '../components/Home'
 function Dashboard(props) {
-  // const assets = props?.state?.assets;
+  // const assets = props?.state?.assetss;
   const location = useLocation();
   const { assets } = location.state || {};
   console.log(assets);
