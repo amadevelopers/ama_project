@@ -8,7 +8,7 @@ import AdminHomePage from '../pages/adminHomePage';
 import Purchase from '../pages/purchase';
 import CseDept from '../pages/cseDeptNew';
 import Dashboard from '../pages/dashboard';
-import ViewAssets from '../pages/viewAssets';
+import {ViewAssets} from '../pages/viewAssets';
 
 import CreateAsset from '../pages/CreateAsset';
 import { AddAsset } from '../pages/AddAsset/addAsset';

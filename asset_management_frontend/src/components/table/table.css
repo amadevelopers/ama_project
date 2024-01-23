@@ -1,0 +1,41 @@
+/* Add this CSS to your stylesheet or component */
+
+/* Table Head */
+.table-head {
+    /* background-color: #f0f0f0;  */
+    width: 100%;
+    color: #edeff3;
+    border-right: 5px solid white;
+
+  }
+
+  
+  .table-head-row {
+    font-weight: bold; /* Bold font for header row */
+    color: #ddd;
+    font-size: 2rem;
+    width: 100%;
+
+  }
+  
+
+  
+  .table-body{
+    padding: 8px 12px; 
+    border-bottom: 1px solid #ec0202; 
+    color: #fafdff; 
+    font-size: 1rem; 
+    width: 100%;
+  }
+
+  .table-body-row{
+    width: 100%;
+    font-size: 1rem; 
+
+  }
+  .table-body-cell{
+    /* width: 100%; */
+    font-size: 2rem; 
+    border-right: 2px solid white;
+    padding: 0rem 0.5rem;
+  }

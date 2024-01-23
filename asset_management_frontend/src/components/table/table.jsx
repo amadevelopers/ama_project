@@ -1,34 +1,57 @@
 // TableHead.jsx
 import React from 'react';
-
-const TableHead = ({ columns }) => {
+import './table.css'
+const TableHead = ({ tableHead }) => {
   return (
-    <thead>
-      <tr>
-        {columns.map((column) => (
-          <th key={column.key}>{column.label}</th>
+    <thead className='table-head'>
+      <tr className='table-head-row'>
+        {tableHead.map((column, index) => (
+          <th key={index} className='table-head-cell'>
+            {column}
+          </th>
         ))}
       </tr>
     </thead>
   );
 };
 
-
 // TableBody.jsx
-import React from 'react';
 
-const TableBody = ({ data, columns }) => {
-  return (
-    <tbody>
-      {data.map((row, rowIndex) => (
-        <tr key={rowIndex}>
-          {columns.map((column) => (
-            <td key={column.key}>{row[column.key]}</td>
-          ))}
-        </tr>
-      ))}
-    </tbody>
-  );
-};
+const TableBody = ({ rowData }) => (
+  <tbody>
+    {rowData.map((row, rowIndex) => (
+      <tr key={rowIndex}>
+        {Object.values(row).map((cell, cellIndex) => (
+          <td key={cellIndex}>
+            {/* Handle nested objects */}
+            {typeof cell === 'object' ? (
+              Object.values(cell).map((nestedValue, nestedIndex) => (
+                <div key={nestedIndex}>{nestedValue}</div>
+              ))
+            ) : (
+              cell
+            )}
+          </td>
+        ))}
+      </tr>
+    ))}
+  </tbody>
+);
 
-export default {TableBody,TableHead};
+
+export { TableBody, TableHead };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

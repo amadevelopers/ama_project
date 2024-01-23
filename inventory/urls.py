@@ -16,5 +16,6 @@ urlpatterns = [
     path('AddSubAsset',AddSubAsset.as_view()),
     path('GetVendors',GetVendors.as_view()),
     path('Dashboard',Dashboard.as_view()),
-    path('Search',Search.as_view())
+    path('Search',Search.as_view()),
+    path('AuthTest',AuthTest.as_view())
 ]

@@ -5,7 +5,7 @@ import { BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, BsFillBellFill }
 
 function Home(props) {
   const { assets, buildings, departments, users, unallocated, ...rest } = props.details
-
+  
   Chart.register(...registerables);
 
   const PieChart = ({ allocated, unallocated }) => {
