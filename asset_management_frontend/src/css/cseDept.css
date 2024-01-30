@@ -19,10 +19,7 @@ thead th {
     
 }
 
-tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-    
-}
+
 
 tbody td {
     padding-left: 25px;

@@ -6,7 +6,7 @@
     /* justify-content: center; */
 }
 .header-div{
-    height: 10%;
+    height: 9%;
 }
 .view-wrapper {
     /* padding: 5px 20px; */
@@ -54,6 +54,6 @@
 
 .view-table-main-div{
     width: 100%;
-    padding-left: 8.5%;
+    /* padding-left: 8.5%; */
     
 }

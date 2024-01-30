@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../components/header/header';
+import Header from '../components/Header';
 import '../css/createAsset.css';
 import axios from '../axios/axios';
 import Sidebar from '../components/Sidebar';
@@ -33,7 +33,7 @@ function CreateAsset() {
   };
 
   useEffect(() => {
-    console.log(assetObject);
+    // console.log(assetObject);
   }, [assetObject]);
 
   const handleSave = async () => {

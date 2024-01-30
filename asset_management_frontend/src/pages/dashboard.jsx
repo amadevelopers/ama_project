@@ -8,19 +8,22 @@ function Dashboard(props) {
   // const assets = props?.state?.assetss;
   const location = useLocation();
   const { assets } = location.state || {};
-  console.log(assets);
-      const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
+  const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
 
-    const OpenSidebar = () => {
-      setOpenSidebarToggle(!openSidebarToggle)
-    }
-  
-    return (
-      <div className='grid-container'>
-        <Header/>
-        <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
-        <Home details={assets}/>
-      </div>
-    )
+  const OpenSidebar = () => {
+    setOpenSidebarToggle(!openSidebarToggle)
   }
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleHeaderSearchResults = (data) => {
+    setSearchResults(data);
+  };
+  return (
+    <div className='grid-container'>
+      <Header onHeaderSearchResults={handleHeaderSearchResults} />
+      <Sidebar openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
+      <Home details={assets} />
+    </div>
+  )
+}
 export default Dashboard

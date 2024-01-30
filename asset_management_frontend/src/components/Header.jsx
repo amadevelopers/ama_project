@@ -3,11 +3,18 @@ import sitLogo from '../assets/images/sit.png'
 import { useNavigate } from 'react-router-dom';
 import './Header.css'
 import axios from '../axios/axios';
-export default function Header() {
+export default function Header({onHeaderSearchResults}) {
   const navigate = useNavigate()
-  const handleClick = () => {
-    // Navigate to Google
-    navigate("/dashboard")
+  const handleClick = async() => {
+    try{
+      const response = await axios.get("/Dashboard")
+      const value = response.data
+      
+      navigate(`/dashboard`, { state: { assets: value } });
+
+    }catch(err){
+      console.log(err.message)
+    }
   };
 
   const [searchTerm, setSearchTerm] = useState('');
@@ -24,13 +31,14 @@ export default function Header() {
     }
 
     try{
-      console.log(searchTerm)
+      // console.log(searchTerm)
       const searchObj = {
         "query":searchTerm
       }
       const response = await axios.post("/Search",  searchObj ,{ headers: { 'Content-Type': 'application/json' }  });
-      setSearchResults(response.data);
-      console.log(searchResults)
+      await setSearchResults(response.data);
+      onHeaderSearchResults(response.data);
+      onHeaderSearchResults(searchResults);
     }catch(err){
       console.log(err.message)
     }
@@ -38,7 +46,8 @@ export default function Header() {
 
   useEffect(() => {
     // Log searchResults whenever it changes
-    console.log(searchResults);
+    // console.log(searchResults);
+    
   }, [searchResults]);
   return (
     <div>
