@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import '../css/viewAsset.css';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
 import { TableBody, TableHead } from '../components/table/table';
 import axios from '../axios/axios'
-function ViewAssets() {
+function ViewAssets(props) {
   const [selectedBuilding, setSelectedBuilding] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('');
   const [selectedClassroom, setSelectedClassroom] = useState('');
   const [filteredDepartments, setFilteredDepartments] = useState([]);
   const [filteredClassrooms, setFilteredClassrooms] = useState([]);
-  const [searchObject, setSearchObject] = useState({})
   const [tableView, setTableView] = useState(false)
   const [buildingData, setBuildingData] = useState([])
   const [roomData, setRoomData] = useState([])
@@ -36,7 +36,6 @@ function ViewAssets() {
   const handleDepartmentChange = async (event) => {
     const selectedDepartment = event.target.value;
     setSelectedDepartment(selectedDepartment);
-    // setRoomsData([])
     try {
       const department = {
         "department": selectedDepartment
@@ -82,27 +81,6 @@ function ViewAssets() {
     }
   }
 
-  //to handle the data coming from search api (header)
-
-  const [headerSearchResults, setheaderSearchResults] = useState([])
-  const [headerTableHead, setHeaderTableHead] = useState([]);
-  const [headerTableBody, setHeaderTableBody] = useState([]);
-  const [headerTableView, setHeaderTableView] = useState(false);
-
-  const handleHeaderSearch = async (data) => {
-    if (data && data.length > 0) {  // Add a check here
-      // setheaderSearchResults(data)
-      setTableView(false)
-      setHeaderTableHead(Object.keys(data[0]));
-      setHeaderTableBody(data.map(row => Object.values(row)));
-      setHeaderTableView(true);
-    } else {
-      // Handle the case when data is undefined or empty
-      console.error('Invalid data received:', data);
-      // alert("No matching elements found")
-    }
-  }
-
   useEffect(() => {
     // This will log the updated state when it changes
     const fetchBuilding = async () => {
@@ -139,12 +117,41 @@ function ViewAssets() {
     // Reset the selected classroom when the department changes
     setSelectedClassroom('');
 
-  }, [tableBody, roomsData, selectedBuilding, selectedDepartment]);
+    
+  }, [ tableBody, roomsData, selectedBuilding, selectedDepartment]);
+
+
+  //to handle the data coming from search api (header)
+
+  const location = useLocation()
+
+  const [headerTableHead, setHeaderTableHead] = useState([]);
+  const [headerTableBody, setHeaderTableBody] = useState([]);
+  const [headerTableView, setHeaderTableView] = useState(false);
+
+  const handleSearchBar = (recievedData) =>  {
+    if (Array.isArray(recievedData) && recievedData.length > 0) {  // Add a check here
+      setTableView(false)
+      setHeaderTableHead(Object.keys(recievedData[0]));
+      setHeaderTableBody(recievedData.map(row => Object.values(row)));
+      setHeaderTableView(true);
+    } else {
+      // Handle the case when data is undefined or empty
+      console.error('Invalid data received:', recievedData);
+      // alert("No matching elements found")
+    }
+  }
+
+  useEffect(() => {
+    const receivedData = location.state?.data || 'NULL';
+    handleSearchBar(receivedData);
+  }, [location.state]);
+
 
   return (
     <div className='view-main'>
       <div className='header-div'>
-        <Header onHeaderSearchResults={handleHeaderSearch} />
+        <Header />
       </div>
       <div className="view-wrapper">
         <div className='sidebar-container'>
@@ -213,7 +220,7 @@ function ViewAssets() {
           {
             headerTableView &&
             <div className='view-table'>
-              <ViewAssetsTable columnHead={headerTableHead} columnBody={headerTableBody} searchResults={headerSearchResults} />
+              <ViewAssetsTable columnHead={headerTableHead} columnBody={headerTableBody}  />
             </div>
           }
         </div>

@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import './sidebar.css'
 import {Link} from 'react-router-dom'
 import { BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
-  BsListCheck}
+  BsListCheck,BsVimeo, BsPlusSquare}
  from 'react-icons/bs'
 
 function Sidebar({openSidebarToggle, OpenSidebar}) {
+    const [purchase,setPurchase] = useState("close")
+
+    useEffect(() => {
+    }, [purchase]);
   return (
     <aside id="sidebar" className={openSidebarToggle ? "sidebar-responsive": ""}>
         <div className='sidebar-title'>
@@ -16,16 +20,28 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
         <ul className='sidebar-list'>
 
         <li className='sidebar-list-item'>
-                <a href="">
+                {/* <a href="#"> */}
                  <h1>Admin Actions</h1>
-                </a>
+                {/* </a> */}
             </li>
 
 
-            <li className='sidebar-list-item'>
-                <Link exact to="/purchases">
+            <li className='sidebar-list-item' >
+                <div onClick={() => setPurchase('open')}>
                     <BsGrid1X2Fill className='icon'/>  Purchases
-                </Link>
+                </div>
+                <ul className={purchase}>
+                    <li className='sidebar-list-item'>
+                        <Link exact to = "/view-purchases">
+                            <BsVimeo className='icon'/>  View Purchases
+                        </Link>
+                    </li>
+                    <li className='sidebar-list-item'>
+                        <Link exact to = "/purchases">
+                        <BsPlusSquare className='icon'/>  Add Purchase
+                        </Link>
+                    </li>
+                </ul>
             </li>
             <li className='sidebar-list-item'>
                 <Link exact to="/createAssetType">

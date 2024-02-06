@@ -3,7 +3,7 @@ import sitLogo from '../assets/images/sit.png'
 import { useNavigate } from 'react-router-dom';
 import './Header.css'
 import axios from '../axios/axios';
-export default function Header({onHeaderSearchResults}) {
+export default function Header() {
   const navigate = useNavigate()
   const handleClick = async() => {
     try{
@@ -31,14 +31,13 @@ export default function Header({onHeaderSearchResults}) {
     }
 
     try{
-      // console.log(searchTerm)
       const searchObj = {
         "query":searchTerm
       }
       const response = await axios.post("/Search",  searchObj ,{ headers: { 'Content-Type': 'application/json' }  });
       await setSearchResults(response.data);
-      onHeaderSearchResults(response.data);
-      onHeaderSearchResults(searchResults);
+
+      navigate("/viewAsset", { state: { data : response.data}})
     }catch(err){
       console.log(err.message)
     }

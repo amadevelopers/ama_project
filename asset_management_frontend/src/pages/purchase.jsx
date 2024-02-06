@@ -2,9 +2,11 @@ import Header from '../components/Header';
 import React from 'react';
 import '../css/purchase.css';
 import { useState } from "react";
-// import vendorNames from './api/vendorNames';
 import axios from '../axios/axios';
 import Sidebar from '../components/Sidebar';
+import { useNavigate } from 'react-router-dom';
+import { ViewAssetsTable } from './viewAssets';
+
 function Purchase(props) {
   const vendorNamesdropdown = props.vendors
   //   const handleSubmit = event => {
@@ -36,7 +38,7 @@ function Purchase(props) {
     <div className='purchase-main'>
       <Header />
       <div className="wrapper">
-        <Sidebar/>
+        <Sidebar />
         <h1>Purchase</h1>
         <form onSubmit={handleSubmit} className='purchase-form'>
           <div className='purchase-sub'>
@@ -72,4 +74,28 @@ function Purchase(props) {
   )
 }
 
-export default Purchase;
+
+
+function ViewPurchases() {
+  const navigate = useNavigate()
+  const getPurchase = async () => {
+    const response = await axios.get('/Purchases')
+    navigate("/viewAsset", { state: { data : response.data}})
+
+  }
+  return (
+
+    <div className='purchase-main'>
+      <Header />
+      <div className='wrapper'>
+      <Sidebar />
+      <div className='purchase-form'>
+        <button onClick={getPurchase}>Click me</button>
+      </div>
+
+      </div>
+    </div>
+  )
+}
+
+export { Purchase, ViewPurchases };

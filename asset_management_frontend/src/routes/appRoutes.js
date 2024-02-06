@@ -5,7 +5,7 @@ import LoginPage from '../pages/loginPage';
 
 import AdminHomePage from '../pages/adminHomePage';
 // import CseDept from '../pages/CseDept';
-import Purchase from '../pages/purchase';
+import {Purchase,ViewPurchases} from '../pages/purchase';
 import CseDept from '../pages/cseDeptNew';
 import Dashboard from '../pages/dashboard';
 import {ViewAssets} from '../pages/viewAssets';
@@ -19,7 +19,7 @@ function AppRoutes() {
                 {/* <Route path="/" element={<AdminHomePage/>}/> */}
                 <Route path="/"  element={<LoginPage/>} />
                 <Route path="/:deptName" element={<CseDept/>}/>
-                {/* <Route path="/dashboard/:value" element={<Dashboard/>}/>                 */}
+                <Route path="/view-purchases" element={<ViewPurchases/>}/>                
                 <Route path="/dashboard" element={<Dashboard/>}/>
                 <Route path="/purchases" element={<Purchase/>}/>
                 <Route path="/createAssetType" element={<CreateAsset/>}/>

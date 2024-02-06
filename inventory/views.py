@@ -36,13 +36,18 @@ class GetAssetsByRoom(APIView):
         serializer = AssetSerializer(asset, many=True)
         return Response(serializer.data)
     
-class AddPurchase(APIView):
+class Purchases(APIView):
     def post(Self,request):
         serializer=PuchaseSerializerToAdd(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def get(self,request):
+        purchases=Purchase.objects.all()
+        serializer=PuchaseSerializerToAdd(purchases,many=True)
+        return Response(serializer.data)
 
 class AddAssets(APIView):
     def post(Self,request):

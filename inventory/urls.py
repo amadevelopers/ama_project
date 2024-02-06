@@ -7,7 +7,7 @@ urlpatterns = [
     path('GetBuildings', GetBuildings.as_view()),
     path('GetAssetsByRoom', GetAssetsByRoom.as_view()),
     path('GetRoomByDepartment', GetRoomByDepartment.as_view()),
-    path('AddPurchase',AddPurchase.as_view()),
+    path('Purchases',Purchases.as_view()),
     path('AddAssets',AddAssets.as_view()),
     path('GetAssetTypes',GetAssetTypes.as_view()),
     path('AddAssetType',AddAssetType.as_view()),
@@ -17,5 +17,5 @@ urlpatterns = [
     path('GetVendors',GetVendors.as_view()),
     path('Dashboard',Dashboard.as_view()),
     path('Search',Search.as_view()),
-    path('AuthTest',AuthTest.as_view())
+    path('AuthTest',AuthTest.as_view()),
 ]
