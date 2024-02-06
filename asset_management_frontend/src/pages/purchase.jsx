@@ -1,4 +1,4 @@
-import Header from '../components/header/header';
+import Header from '../components/Header';
 import React from 'react';
 import '../css/purchase.css';
 import { useState } from "react";

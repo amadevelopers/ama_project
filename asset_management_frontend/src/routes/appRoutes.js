@@ -8,6 +8,7 @@ import AdminHomePage from '../pages/adminHomePage';
 import Purchase from '../pages/purchase';
 import CseDept from '../pages/cseDeptNew';
 import Dashboard from '../pages/dashboard';
+import {ViewAssets} from '../pages/viewAssets';
 
 import CreateAsset from '../pages/CreateAsset';
 import { AddAsset } from '../pages/AddAsset/addAsset';
@@ -23,7 +24,7 @@ function AppRoutes() {
                 <Route path="/purchases" element={<Purchase/>}/>
                 <Route path="/createAssetType" element={<CreateAsset/>}/>
                 <Route path="/addAsset" element={<AddAsset/>}/>
-                <Route path="/viewAsset" element={<AddAsset/>}/>
+                <Route path="/viewAsset" element={<ViewAssets/>}/>
                 <Route path="/create-user" element={<LoginPage/>}/>
 
             </Routes>

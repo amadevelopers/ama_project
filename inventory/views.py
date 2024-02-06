@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework.permissions import IsAuthenticated
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework import status
@@ -32,7 +33,7 @@ class GetAssetsByRoom(APIView):
     def post(self,request):
         room=request.data['room']
         asset=Asset.objects.filter(room__name=room)
-        serializer=AssetSerailizer(asset,many=True)
+        serializer = AssetSerializer(asset, many=True)
         return Response(serializer.data)
     
 class AddPurchase(APIView):
@@ -117,7 +118,7 @@ class Dashboard(APIView):
         }
         return Response(data=data)
 
-class Search(APIView):
+class Search(APIView):      #optimize for specs later
     def post(self,request):
         search_string=request.data["query"]
         result = Asset.objects.annotate(
@@ -131,3 +132,14 @@ class Search(APIView):
 ).filter(similarity__gt=0.3).order_by("-similarity")
         serializer=GetAssetSerializer(result,many=True)
         return Response(serializer.data)
+    
+class AuthTest(APIView):
+    authentication_classes = [JWTAuthentication]
+    permission_classes = [IsAuthenticated]
+    def get(self,request):
+        message={
+            "Imposter":"anagha",
+            "crewmates":"rizith,shank,liki,vaibhav",
+            "engineer":"niranjan"
+        }
+        return Response(data=message)

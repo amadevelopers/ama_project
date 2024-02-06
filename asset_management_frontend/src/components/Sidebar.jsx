@@ -1,9 +1,8 @@
 import React from 'react'
 import './sidebar.css'
 import {Link} from 'react-router-dom'
-import 
-{BsCart3, BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
-  BsListCheck, BsMenuButtonWideFill, BsFillGearFill}
+import { BsGrid1X2Fill, BsFillArchiveFill, BsFillGrid3X3GapFill, BsPeopleFill, 
+  BsListCheck}
  from 'react-icons/bs'
 
 function Sidebar({openSidebarToggle, OpenSidebar}) {
@@ -39,7 +38,7 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
                 </Link>
             </li>
             <li className='sidebar-list-item'>
-                <Link exact to="/view-asset">
+                <Link exact to="/viewAsset">
                 <BsListCheck className='icon'/> View Existing Assets
                 </Link>
             </li>
