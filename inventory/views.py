@@ -122,7 +122,7 @@ class Search(APIView):      #optimize for specs later
     def post(self,request):
         search_string=request.data["query"]
         result = Asset.objects.annotate(
-    similarity=TrigramSimilarity("name", search_string) +
+        similarity=TrigramSimilarity("name", search_string) +
                TrigramSimilarity("serial_no", search_string) +
                TrigramSimilarity("asset_type__name", search_string) +
                TrigramSimilarity("room__name", search_string) +

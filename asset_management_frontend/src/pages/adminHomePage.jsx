@@ -4,7 +4,7 @@ import '../css/adminHomePage.css'
 import Cards from '../components/cards/cards'
 import { AddAsset } from './AddAsset/addAsset'
 import CreateAsset from './CreateAsset'
-import Header from '../components/header/header'
+import Header from '../components/Header'
 import Purchase from './purchase'
 import axios from 'axios'
 
