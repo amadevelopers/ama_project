@@ -15,8 +15,8 @@ function ViewAssets(props) {
   const [buildingData, setBuildingData] = useState([])
   const [roomData, setRoomData] = useState([])
   const [roomsData, setRoomsData] = useState([])
-  const[dropdown,setDropdown] = useState(true)
-  
+
+
   const handleBuildingChange = (event) => {
     const selectedBuilding = event.target.value;
     setSelectedBuilding(selectedBuilding);
@@ -145,13 +145,7 @@ function ViewAssets(props) {
   useEffect(() => {
     const receivedData = location.state?.data || 'NULL';
     handleSearchBar(receivedData);
-
-    if(props.length>0){
-      setDropdown(false)
-    }else{
-      setDropdown(true)
-    }
-  }, [location.state, props]);
+  }, [location.state]);
 
 
   return (
@@ -164,7 +158,6 @@ function ViewAssets(props) {
           <Sidebar />
         </div>
         <div className='view-asset-main-page'>
-        {(dropdown === true) && 
           <form className='contents' onSubmit={handleSearch}>
             <div className='contents-sub'>
               <select className='building'
@@ -217,7 +210,6 @@ function ViewAssets(props) {
               <button type='submit'>Search</button>
             </div>
           </form>
-        }
           {
             tableView &&
             <div className='view-table'>
