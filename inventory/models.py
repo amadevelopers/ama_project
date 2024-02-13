@@ -38,7 +38,7 @@ class Asset(models.Model):
     purchase=models.ForeignKey(Purchase,to_field='invoice_no',db_column='purchase_invoice_no',on_delete=models.PROTECT,null=True)
     target_department= models.ForeignKey(Department,related_name='assets_moved',to_field='name',db_column='target_department_name',null=True, on_delete=models.PROTECT)
     specs = models.JSONField()
-    price = models.DecimalField(max_digits=10, decimal_places=2) 
+    price = models.DecimalField(max_digits=10, decimal_places=2, default=0.0) 
 
 class SubAsset(models.Model):
     name = models.CharField(max_length=100)
